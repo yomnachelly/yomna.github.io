@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -18,6 +19,7 @@
             <div class="logo">YOMNA.</div>
             <div class="nav-links">
                 <a href="#about">À propos</a>
+                <a href="#skills">Compétences</a>
                 <a href="#projects">Projets</a>
                 <a href="#experience">Expérience</a>
                 <a href="#certifications">Certifications</a>
@@ -46,9 +48,56 @@
         <div class="glass-card about-card">
             <p>Passionnée par le développement web, l'IA et le cloud. Certifiée Microsoft & Cisco, j'aime concevoir des applications modernes, scalables et intuitives. Créative, rigoureuse et toujours en quête de nouveaux défis techniques.</p>
             <div class="stats">
-                <span>3+ stages</span>
-                <span>5+ projets full-stack</span>
-                <span>5+ certifications</span>
+                <span><i class="fas fa-briefcase"></i> 3+ stages</span>
+                <span><i class="fas fa-code"></i> 5+ projets full-stack</span>
+                <span><i class="fas fa-certificate"></i> 12+ certifications</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <h2 class="section-title">🛠️ Compétences</h2>
+        <div class="skills-grid">
+            <div class="skill-category glass-card">
+                <h3><i class="fas fa-code"></i> Frontend</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">HTML5</span>
+                    <span class="skill-tag">CSS3</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">Angular</span>
+                    <span class="skill-tag">Tailwind CSS</span>
+                    <span class="skill-tag">Bootstrap</span>
+                </div>
+            </div>
+            <div class="skill-category glass-card">
+                <h3><i class="fas fa-server"></i> Backend</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Spring Boot</span>
+                    <span class="skill-tag">Laravel</span>
+                    <span class="skill-tag">PHP</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">REST APIs</span>
+                    <span class="skill-tag">JWT</span>
+                </div>
+            </div>
+            <div class="skill-category glass-card">
+                <h3><i class="fas fa-database"></i> Base de données</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">MySQL</span>
+                    <span class="skill-tag">PostgreSQL</span>
+                    <span class="skill-tag">MongoDB</span>
+                </div>
+            </div>
+            <div class="skill-category glass-card">
+                <h3><i class="fas fa-cloud"></i> Cloud & DevOps</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Azure</span>
+                    <span class="skill-tag">AWS</span>
+                    <span class="skill-tag">Docker</span>
+                    <span class="skill-tag">Git</span>
+                    <span class="skill-tag">GitHub Actions</span>
+                </div>
             </div>
         </div>
     </section>
@@ -58,64 +107,89 @@
         <h2 class="section-title">🚀 Projets Réalisés</h2>
         <div class="carousel-container">
             <div class="slides" id="slides">
-                <!-- Slide 1 - Leave Management -->
+                <!-- Slide 1 - Animal Center -->
                 <div class="slide">
                     <div class="project-card">
-                        <h2>Leave Management</h2>
+                        <img src="https://via.placeholder.com/400x200/1a0033/a78bfa?text=Animal+Center" alt="Animal Center" class="project-image">
+                        <h2>Animal Center</h2>
+                        <p class="tech">Angular + Spring Boot + PostgreSQL</p>
+                        <ul>
+                            <li>Gestion complète d'un centre animalier</li>
+                            <li>Authentification et gestion des rôles</li>
+                            <li>API REST documentée</li>
+                        </ul>
+                        <div class="project-links">
+                            <a href="https://github.com/yomnachelly/animal-center.git" class="project-link" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                            <a href="#" class="project-link demo-link" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Slide 2 - Gestion des Congés -->
+                <div class="slide">
+                    <div class="project-card">
+                        <img src="https://via.placeholder.com/400x200/1a0033/a78bfa?text=Gestion+des+Congés" alt="Gestion des Congés" class="project-image">
+                        <h2>Gestion des Congés</h2>
                         <p class="tech">Angular + Spring Boot + PostgreSQL + JWT</p>
                         <ul>
                             <li>Application complète de gestion des congés</li>
                             <li>Authentification sécurisée + gestion des rôles</li>
-                            <li>API REST + tests Postman (ST21 Tunis)</li>
+                            <li>API REST + tests Postman</li>
                         </ul>
-                        <a href="#" class="project-link">Voir sur GitHub →</a>
-                    </div>
-                </div>
-                <!-- Slide 2 - Hospital Management -->
-                <div class="slide">
-                    <div class="project-card">
-                        <h2>Hospital Management</h2>
-                        <p class="tech">Laravel + MySQL</p>
-                        <ul>
-                            <li>Gestion des agents, patients, médecins et rendez-vous</li>
-                            <li>Projet complet (stage Ministère de la Santé)</li>
-                        </ul>
-                        <a href="#" class="project-link">Voir sur GitHub →</a>
+                        <div class="project-links">
+                            <a href="https://github.com/yomnachelly/gestion_des_conges_stage2.git" class="project-link" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                            <a href="#" class="project-link demo-link" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                        </div>
                     </div>
                 </div>
                 <!-- Slide 3 - Cosmetics E-commerce -->
                 <div class="slide">
                     <div class="project-card">
+                        <img src="https://via.placeholder.com/400x200/1a0033/a78bfa?text=Cosmetics+Shop" alt="Cosmetics E-commerce" class="project-image">
                         <h2>Cosmetics E-commerce</h2>
                         <p class="tech">Laravel + Tailwind CSS</p>
                         <ul>
                             <li>Plateforme de vente de produits cosmétiques</li>
                             <li>Gestion produits, commandes et clients</li>
+                            <li>Panneau d'administration</li>
                         </ul>
-                        <a href="#" class="project-link">Voir sur GitHub →</a>
+                        <div class="project-links">
+                            <a href="https://github.com/yomnachelly/gestion_produitcosmetique_laravelphp.git" class="project-link" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                            <a href="#" class="project-link demo-link" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                        </div>
                     </div>
                 </div>
-                <!-- Slide 4 - Hotel Management -->
+                <!-- Slide 4 - Gestion Comptes -->
                 <div class="slide">
                     <div class="project-card">
-                        <h2>Hotel Management</h2>
-                        <p class="tech">Laravel</p>
+                        <img src="https://via.placeholder.com/400x200/1a0033/a78bfa?text=Gestion+Comptes" alt="Gestion Comptes" class="project-image">
+                        <h2>Gestion de Comptes</h2>
+                        <p class="tech">Angular</p>
                         <ul>
-                            <li>Gestion des chambres, services et réservations</li>
-                            <li>Système complet de booking</li>
+                            <li>Application de gestion de comptes bancaires</li>
+                            <li>Interface utilisateur intuitive</li>
+                            <li>Opérations CRUD complètes</li>
                         </ul>
-                        <a href="#" class="project-link">Voir sur GitHub →</a>
+                        <div class="project-links">
+                            <a href="https://github.com/yomnachelly/gestion-comptes_miniprojet_angular.git" class="project-link" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                            <a href="#" class="project-link demo-link" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                        </div>
                     </div>
                 </div>
                 <!-- Slide 5 - Interactive Forum -->
                 <div class="slide">
                     <div class="project-card">
+                        <img src="https://via.placeholder.com/400x200/1a0033/a78bfa?text=Interactive+Forum" alt="Interactive Forum" class="project-image">
                         <h2>Interactive Forum</h2>
                         <p class="tech">Angular + PHP + MySQL</p>
                         <ul>
-                            <li>Espace d'échange et publication d'articles (stage E-Learning)</li>
+                            <li>Espace d'échange et publication d'articles</li>
+                            <li>Système de commentaires</li>
+                            <li>Profil utilisateur</li>
                         </ul>
-                        <a href="#" class="project-link">Voir sur GitHub →</a>
+                        <div class="project-links">
+                            <a href="#" class="project-link" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                            <a href="#" class="project-link demo-link" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -132,24 +206,24 @@
         <h2 class="section-title">💼 Expérience</h2>
         <div class="timeline glass-card">
             <div class="timeline-item">
-                <div class="date">Janv – Fév 2025</div>
+                <div class="date">Fév – Avril 2025</div>
                 <div class="content">
                     <h3>Stagiaire Full-Stack • ST21 Tunis</h3>
-                    <p>Développement d'une application de gestion des congés (Angular + Spring Boot)</p>
+                    <p>Développement d'une application de gestion des congés (Angular + Spring Boot + PostgreSQL)</p>
                 </div>
             </div>
             <div class="timeline-item">
                 <div class="date">Juin – Août 2024</div>
                 <div class="content">
-                    <h3>Stagiaire • Ministère de la Santé Tunis</h3>
-                    <p>Conception & implémentation d'un site de gestion des agents hospitaliers (Laravel)</p>
+                    <h3>Stagiaire Développeuse Web • Ministère de la Santé Tunis</h3>
+                    <p>Conception & implémentation d'un site de gestion des agents hospitaliers (Laravel + MySQL)</p>
                 </div>
             </div>
             <div class="timeline-item">
                 <div class="date">Janv – Fév 2024</div>
                 <div class="content">
                     <h3>Stagiaire • ALMOURABI E-Learning Nabeul</h3>
-                    <p>Création d'un forum interactif (Angular + Bootstrap)</p>
+                    <p>Création d'un forum interactif (Angular + Bootstrap + PHP)</p>
                 </div>
             </div>
         </div>
@@ -160,48 +234,6 @@
         <h2 class="section-title">🏆 Certifications</h2>
         <div class="certs-carousel-container">
             <div class="certs-slides" id="certs-slides">
-                
-                <!-- 365 Data Science - Data Cleaning -->
-                <div class="certs-slide">
-                    <a href="https://learn.365datascience.com/certificates/CC-D0B460DD63/" target="_blank" class="cert-link">
-                        <div class="cert-card-carousel">
-                            <img src="https://learn.365datascience.com/logo.png" 
-                                 alt="365 Data Science"
-                                 class="cert-image"
-                                 onerror="this.src='https://via.placeholder.com/150x150/1a0033/a78bfa?text=365+DS'">
-                            <h3>Data Cleaning with pandas</h3>
-                            <p class="cert-issuer">365 Data Science</p>
-                        </div>
-                    </a>
-                </div>
-                
-                <!-- 365 Data Science - Python -->
-                <div class="certs-slide">
-                    <a href="https://learn.365datascience.com/certificates/CC-E9DD618535/" target="_blank" class="cert-link">
-                        <div class="cert-card-carousel">
-                            <img src="https://learn.365datascience.com/logo.png" 
-                                 alt="365 Data Science"
-                                 class="cert-image"
-                                 onerror="this.src='https://via.placeholder.com/150x150/1a0033/a78bfa?text=365+DS'">
-                            <h3>Introduction to Python</h3>
-                            <p class="cert-issuer">365 Data Science</p>
-                        </div>
-                    </a>
-                </div>
-                
-                <!-- 365 Data Science - Intro to AI -->
-                <div class="certs-slide">
-                    <a href="https://learn.365datascience.com/certificates/CC-8EBB904EB1/" target="_blank" class="cert-link">
-                        <div class="cert-card-carousel">
-                            <img src="https://learn.365datascience.com/logo.png" 
-                                 alt="365 Data Science"
-                                 class="cert-image"
-                                 onerror="this.src='https://via.placeholder.com/150x150/1a0033/a78bfa?text=365+DS'">
-                            <h3>Intro to AI</h3>
-                            <p class="cert-issuer">365 Data Science</p>
-                        </div>
-                    </a>
-                </div>
                 
                 <!-- Aviatrix Multicloud Network Associate -->
                 <div class="certs-slide">
@@ -241,6 +273,48 @@
                                  onerror="this.src='https://via.placeholder.com/150x150/1a0033/a78bfa?text=Cisco'">
                             <h3>Introduction to Modern AI</h3>
                             <p class="cert-issuer">Cisco</p>
+                        </div>
+                    </a>
+                </div>
+                
+                <!-- 365 Data Science - Data Cleaning -->
+                <div class="certs-slide">
+                    <a href="https://learn.365datascience.com/certificates/CC-D0B460DD63/" target="_blank" class="cert-link">
+                        <div class="cert-card-carousel">
+                            <img src="https://learn.365datascience.com/logo.png" 
+                                 alt="365 Data Science"
+                                 class="cert-image"
+                                 onerror="this.src='https://via.placeholder.com/150x150/1a0033/a78bfa?text=365+DS'">
+                            <h3>Data Cleaning with pandas</h3>
+                            <p class="cert-issuer">365 Data Science</p>
+                        </div>
+                    </a>
+                </div>
+                
+                <!-- 365 Data Science - Python -->
+                <div class="certs-slide">
+                    <a href="https://learn.365datascience.com/certificates/CC-E9DD618535/" target="_blank" class="cert-link">
+                        <div class="cert-card-carousel">
+                            <img src="https://learn.365datascience.com/logo.png" 
+                                 alt="365 Data Science"
+                                 class="cert-image"
+                                 onerror="this.src='https://via.placeholder.com/150x150/1a0033/a78bfa?text=365+DS'">
+                            <h3>Introduction to Python</h3>
+                            <p class="cert-issuer">365 Data Science</p>
+                        </div>
+                    </a>
+                </div>
+                
+                <!-- 365 Data Science - Intro to AI -->
+                <div class="certs-slide">
+                    <a href="https://learn.365datascience.com/certificates/CC-8EBB904EB1/" target="_blank" class="cert-link">
+                        <div class="cert-card-carousel">
+                            <img src="https://learn.365datascience.com/logo.png" 
+                                 alt="365 Data Science"
+                                 class="cert-image"
+                                 onerror="this.src='https://via.placeholder.com/150x150/1a0033/a78bfa?text=365+DS'">
+                            <h3>Intro to AI</h3>
+                            <p class="cert-issuer">365 Data Science</p>
                         </div>
                     </a>
                 </div>
@@ -300,6 +374,34 @@
                     </a>
                 </div>
                 
+                <!-- Microsoft Azure AI Fundamentals -->
+                <div class="certs-slide">
+                    <a href="https://learn.microsoft.com/en-us/users/yomnachelly/credentials" target="_blank" class="cert-link">
+                        <div class="cert-card-carousel">
+                            <img src="https://learn.microsoft.com/en-us/media/learn/certification/badges/microsoft-certified-fundamentals-badge.svg" 
+                                 alt="Microsoft"
+                                 class="cert-image"
+                                 onerror="this.src='https://via.placeholder.com/150x150/1a0033/a78bfa?text=Microsoft'">
+                            <h3>Azure AI Fundamentals</h3>
+                            <p class="cert-issuer">Microsoft</p>
+                        </div>
+                    </a>
+                </div>
+                
+                <!-- Microsoft 365 Copilot -->
+                <div class="certs-slide">
+                    <a href="https://learn.microsoft.com/en-us/users/yomnachelly/credentials" target="_blank" class="cert-link">
+                        <div class="cert-card-carousel">
+                            <img src="https://learn.microsoft.com/en-us/media/learn/certification/badges/microsoft-certified-fundamentals-badge.svg" 
+                                 alt="Microsoft"
+                                 class="cert-image"
+                                 onerror="this.src='https://via.placeholder.com/150x150/1a0033/a78bfa?text=Microsoft'">
+                            <h3>Microsoft 365 Copilot</h3>
+                            <p class="cert-issuer">Microsoft</p>
+                        </div>
+                    </a>
+                </div>
+                
             </div>
             
             <button class="certs-prev-btn">‹</button>
@@ -313,17 +415,20 @@
     <section id="contact" class="section">
         <h2 class="section-title">📧 Contact</h2>
         <div class="glass-card contact-card">
-            <p>Email : yomnachelly3@gmail.com</p>
-            <p>Téléphone : +216 21 429 814</p>
-            <p>LinkedIn : linkedin.com/in/yomna-chelly</p>
-            <p>GitHub : github.com/yomnachelly</p>
-            <a href="#" class="btn-primary" style="margin-top: 2rem; display: inline-block;">Télécharger mon CV</a>
+            <p><i class="fas fa-envelope"></i> Email : yomnachelly3@gmail.com</p>
+            <p><i class="fas fa-phone"></i> Téléphone : +216 21 429 814</p>
+            <p><i class="fab fa-linkedin"></i> LinkedIn : linkedin.com/in/yomna-chelly</p>
+            <p><i class="fab fa-github"></i> GitHub : github.com/yomnachelly</p>
+            <a href="/CV_Yomna_Chelly.pdf" download class="btn-primary" style="margin-top: 2rem; display: inline-block;">
+                <i class="fas fa-download"></i> Télécharger mon CV
+            </a>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
         <p>© 2026 Yomna Chelly • Made with neon & passion ✨</p>
+        <p><a href="https://github.com/yomnachelly/yomna.github.io" target="_blank" class="footer-link"><i class="fab fa-github"></i> Code source du portfolio</a></p>
     </footer>
 
     <script src="script.js"></script>
