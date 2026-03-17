@@ -11,6 +11,23 @@ body {
     overflow-x: hidden;
     line-height: 1.6;
 }
+.certs-slides {
+    display: flex;
+    transition: transform 0.6s ease-in-out;
+    width: 100%;
+}
+
+.certs-slide {
+    flex: 0 0 100%;           /* ← très important */
+    min-width: 100%;
+}
+
+.certs-carousel-container {
+    position: relative;
+    overflow: hidden;
+    max-width: 900px;         /* adapte selon tes besoins */
+    margin: 0 auto;
+}
 
 /* Background Animation */
 .background {
