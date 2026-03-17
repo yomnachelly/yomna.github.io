@@ -1,4 +1,3 @@
-// script.js
 // Typing effect
 const texts = [
   "Passionnée par le développement web",
@@ -47,11 +46,3 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     }
   });
 });
-
-// Neon pulse on logo
-setInterval(() => {
-  document.querySelector('.logo').style.textShadow = '0 0 25px #a78bfa';
-  setTimeout(() => {
-    document.querySelector('.logo').style.textShadow = '0 0 15px #a78bfa';
-  }, 400);
-}, 2200);
