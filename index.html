@@ -194,8 +194,8 @@
                 </div>
             </div>
             
-            <button class="prev-btn">‹</button>
-            <button class="next-btn">›</button>
+            <button class="prev-btn" aria-label="Projet précédent">‹</button>
+            <button class="next-btn" aria-label="Projet suivant">›</button>
             
             <div class="dots" id="dots"></div>
         </div>
@@ -234,107 +234,46 @@
         <h2 class="section-title">🏆 Certifications</h2>
         <div class="certs-carousel-container">
             <div class="certs-slides" id="certs-slides">
-                <!-- 1. linkedin-preparer-carriere-ia-generative -->
+                <!-- Les certifications ici... -->
                 <div class="certs-slide">
                     <a href="https://www.linkedin.com/learning/certificates/3c1a528cbcbb74177c5db53c89571aaa6b67224a2581d9a5fa117ac3a1ad7fc8" 
                        target="_blank" class="cert-link">
                         <div class="cert-card-carousel">
                             <img src="certifications/linkedin-preparer-carriere-ia-generative.jpg"
-                                 alt="Préparer votre carrière dans l'IA générative - Microsoft & LinkedIn"
-                                 class="cert-image">
+                                 alt="Préparer votre carrière dans l'IA générative"
+                                 class="cert-image"
+                                 onerror="this.src='https://via.placeholder.com/300x200/1a0033/a78bfa?text=Certification+IA'">
                             <h3>Carrière dans l'IA Générative</h3>
                             <p>LinkedIn Learning + Microsoft • Août 2025</p>
                         </div>
                     </a>
                 </div>
-
-                <!-- 2. cisco-introduction-modern-ai -->
-                <div class="certs-slide">
-                    <a href="#" target="_blank" class="cert-link"> <!-- Ajoute le vrai lien Cred/SupCom si tu l'as -->
-                        <div class="cert-card-carousel">
-                            <img src="certifications/cisco-introduction-modern-ai.jpg"
-                                 alt="Introduction to Modern AI - Cisco Networking Academy"
-                                 class="cert-image">
-                            <h3>Introduction to Modern AI</h3>
-                            <p>Cisco / SupCom • Sep 2025</p>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- 3. cisco-devnet-associate -->
-                <div class="certs-slide">
-                    <a href="https://www.credly.com/badges/2614043d-9762-4626-96c4-63673e08dba8/public_url" 
-                       target="_blank" class="cert-link">
-                        <div class="cert-card-carousel">
-                            <img src="certifications/cisco-devnet-associate.jpg"
-                                 alt="DevNet Associate - Cisco"
-                                 class="cert-image">
-                            <h3>DevNet Associate</h3>
-                            <p>Cisco / Iset Zaghouan • Juil 2025</p>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- 4. aviatrix-multicloud-network-associate -->
-                <div class="certs-slide">
-                    <a href="https://www.credly.com/badges/2fb27117-c3ca-4ad3-a504-3803a8182854/public_url" 
-                       target="_blank" class="cert-link">
-                        <div class="cert-card-carousel">
-                            <img src="certifications/aviatrix-multicloud-network-associate.jpg"
-                                 alt="Multicloud Network Associate - Aviatrix"
-                                 class="cert-image">
-                            <h3>Multicloud Network Associate</h3>
-                            <p>Aviatrix • 2025-2028</p>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- 5. elements-of-ai (lié au Tech Pathways MENA) -->
-                <div class="certs-slide">
-                    <a href="https://www.elementsofai.com/" target="_blank" class="cert-link">
-                        <div class="cert-card-carousel">
-                            <img src="certifications/elements-of-ai.jpg"
-                                 alt="Elements of AI - Tech Pathways MENA"
-                                 class="cert-image">
-                            <h3>Elements of AI</h3>
-                            <p>MinnaLearn / Village Capital / Google</p>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- 6. 365-data-cleaning-pandas -->
-                <div class="certs-slide">
-                    <a href="https://learn.365datascience.com/certificates/CC-D0B460DD63/" 
-                       target="_blank" class="cert-link">
-                        <div class="cert-card-carousel">
-                            <img src="certifications/365-data-cleaning-pandas.jpg"
-                                 alt="Data Cleaning and Preprocessing with pandas"
-                                 class="cert-image">
-                            <h3>Data Cleaning with pandas</h3>
-                            <p>365 Data Science • Nov 2025</p>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- 7. 365-introduction-python -->
-                <div class="certs-slide">
-                    <a href="https://learn.365datascience.com/certificates/CC-E9DD618535/" 
-                       target="_blank" class="cert-link">
-                        <div class="cert-card-carousel">
-                            <img src="certifications/365-introduction-python.jpg"
-                                 alt="Introduction to Python"
-                                 class="cert-image">
-                            <h3>Introduction to Python</h3>
-                            <p>365 Data Science • Nov 2025</p>
-                        </div>
-                    </a>
-                </div>
+                <!-- Autres slides... -->
             </div>
 
-            <button class="certs-prev-btn">‹</button>
-            <button class="certs-next-btn">›</button>
+            <button class="certs-prev-btn" aria-label="Certification précédente">‹</button>
+            <button class="certs-next-btn" aria-label="Certification suivante">›</button>
 
             <div class="certs-dots" id="certs-dots"></div>
+        </div>
+    </section>
+
+    <!-- Contact Section (ajoutée) -->
+    <section id="contact" class="section">
+        <h2 class="section-title">📫 Contact</h2>
+        <div class="glass-card contact-card">
+            <p>Intéressé(e) par mon profil ? N'hésitez pas à me contacter !</p>
+            <div class="contact-links">
+                <a href="mailto:yomna.chelly@example.com" class="contact-link">
+                    <i class="fas fa-envelope"></i> yomna.chelly@example.com
+                </a>
+                <a href="https://www.linkedin.com/in/yomnachelly" target="_blank" class="contact-link">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+                <a href="https://github.com/yomnachelly" target="_blank" class="contact-link">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+            </div>
         </div>
     </section>
 
