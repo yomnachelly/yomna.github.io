@@ -18,14 +18,14 @@ body {
 }
 
 .certs-slide {
-    flex: 0 0 100%;           /* ← très important */
+    flex: 0 0 100%;
     min-width: 100%;
 }
 
 .certs-carousel-container {
     position: relative;
     overflow: hidden;
-    max-width: 900px;         /* adapte selon tes besoins */
+    max-width: 900px;
     margin: 0 auto;
 }
 
@@ -410,5 +410,16 @@ body {
 }
 
 .dot {
-    width:
-        
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(167, 139, 250, 0.4);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.dot.active {
+    background: #a78bfa;
+    transform: scale(1.3);
+    box-shadow: 0 0 15px #a78bfa;
+}
