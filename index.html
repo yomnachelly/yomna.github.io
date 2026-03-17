@@ -1,76 +1,194 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<title>Yomna Chelly Portfolio</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Yomna Chelly • Web Developer</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet">
 </head>
-
 <body>
-
-<header class="hero">
-    <h1>Yomna Chelly</h1>
-    <p>Web Developer | AI & Cloud Enthusiast</p>
-</header>
-
-<section class="section hidden">
-    <h2>👩‍💻 About Me</h2>
-    <p>
-        Passionnée par le développement web, l’IA et le cloud.
-        Certifiée Microsoft & Cisco, j’aime créer des applications modernes et innovantes.
-    </p>
-</section>
-
-<section class="section hidden">
-    <h2>🚀 Projects</h2>
-
-    <div class="card">
-        <img src="images/project1.jpg">
-        <h3>AnimalCare Platform</h3>
-        <p>Laravel + Stripe + Mailtrap</p>
+  <!-- NAV -->
+  <nav class="glass-nav">
+    <div class="nav-content">
+      <div class="logo">YOMNA<span class="neon-dot">.</span></div>
+      <div class="nav-links">
+        <a href="#about">À propos</a>
+        <a href="#projects">Projets</a>
+        <a href="#experience">Expérience</a>
+        <a href="#certifs">Certifications</a>
+        <a href="#contact">Contact</a>
+      </div>
     </div>
+  </nav>
 
-    <div class="card">
-        <img src="images/project2.jpg">
-        <h3>Leave Management</h3>
-        <p>Angular + Spring Boot</p>
+  <!-- HERO -->
+  <header class="hero">
+    <div class="background"></div>
+    <div class="hero-content">
+      <div class="hero-badge">👩‍💻 Web Developer | AI & Cloud Enthusiast</div>
+      <h1 class="hero-title">YOMNA CHELLY</h1>
+      <div id="typing" class="hero-subtitle"></div>
+      
+      <div class="hero-buttons">
+        <a href="#projects" class="btn-primary">Voir mes projets ✨</a>
+        <a href="https://github.com/yomnachelly" target="_blank" class="btn-secondary">GitHub</a>
+      </div>
+      
+      <div class="scroll-hint">↓ Scroll pour découvrir</div>
     </div>
+  </header>
 
-</section>
-
-<section class="section hidden">
-    <h2>🏆 Certifications</h2>
-
-    <div class="card small">
-        <img src="images/cert1.png">
-        <p>Cisco AI Certification</p>
+  <!-- ABOUT -->
+  <section id="about" class="section">
+    <div class="section-title">👩‍💻 À propos de moi</div>
+    <div class="glass-card about-card">
+      <p>
+        Passionnée par le développement web, l’IA et le cloud. Certifiée Microsoft & Cisco, 
+        j’aime concevoir des applications modernes, scalables et intuitives. 
+        Créative, rigoureuse et toujours en quête de nouveaux défis techniques.
+      </p>
+      <div class="stats">
+        <div><strong>3+</strong> stages</div>
+        <div><strong>5+</strong> projets full-stack</div>
+        <div><strong>5</strong> certifications internationales</div>
+      </div>
     </div>
+  </section>
 
-    <div class="card small">
-        <img src="images/cert2.png">
-        <p>Aviatrix Multicloud</p>
+  <!-- PROJECTS + 3D CAROUSEL -->
+  <section id="projects" class="section">
+    <div class="section-title">🚀 Projets Réalisés</div>
+    <div class="scene">
+      <div class="carousel" id="projectCarousel">
+        <!-- Card 1 -->
+        <div class="card">
+          <div class="card-content">
+            <h2>Leave Management</h2>
+            <p class="tech">Angular + Spring Boot + PostgreSQL + JWT</p>
+            <ul>
+              <li>Application complète de gestion des congés</li>
+              <li>Authentification sécurisée + gestion des rôles</li>
+              <li>API REST + tests Postman</li>
+            </ul>
+            <a href="https://github.com/yomnachelly" target="_blank" class="project-link">Voir sur GitHub →</a>
+          </div>
+        </div>
+        
+        <!-- Card 2 -->
+        <div class="card">
+          <div class="card-content">
+            <h2>Hospital Management</h2>
+            <p class="tech">Laravel + MySQL</p>
+            <ul>
+              <li>Gestion des agents, patients, médecins et rendez-vous</li>
+              <li>Backend + Frontend complet (stage Ministère de la Santé)</li>
+              <li>Base de données optimisée</li>
+            </ul>
+            <a href="https://github.com/yomnachelly" target="_blank" class="project-link">Voir sur GitHub →</a>
+          </div>
+        </div>
+        
+        <!-- Card 3 -->
+        <div class="card">
+          <div class="card-content">
+            <h2>Cosmetics E-commerce</h2>
+            <p class="tech">Laravel + Tailwind CSS</p>
+            <ul>
+              <li>Plateforme de vente de produits cosmétiques</li>
+              <li>Gestion produits, commandes et clients</li>
+              <li>Interface moderne et responsive</li>
+            </ul>
+            <a href="https://github.com/yomnachelly" target="_blank" class="project-link">Voir sur GitHub →</a>
+          </div>
+        </div>
+        
+        <!-- Card 4 -->
+        <div class="card">
+          <div class="card-content">
+            <h2>Hotel Management</h2>
+            <p class="tech">Laravel</p>
+            <ul>
+              <li>Gestion des chambres, services et réservations</li>
+              <li>Système complet de booking</li>
+            </ul>
+            <a href="https://github.com/yomnachelly" target="_blank" class="project-link">Voir sur GitHub →</a>
+          </div>
+        </div>
+        
+        <!-- Card 5 -->
+        <div class="card">
+          <div class="card-content">
+            <h2>Interactive Forum</h2>
+            <p class="tech">PHP + MySQL + Angular</p>
+            <ul>
+              <li>Espace d’échange et publication d’articles (stage E-Learning)</li>
+              <li>Interface dynamique + Bootstrap</li>
+            </ul>
+            <a href="https://github.com/yomnachelly" target="_blank" class="project-link">Voir sur GitHub →</a>
+          </div>
+        </div>
+      </div>
     </div>
+    <p class="carousel-hint">✨ Survole pour mettre en pause • Rotation 3D infinie</p>
+  </section>
 
-</section>
-
-<section class="section hidden">
-    <h2>💼 Experience</h2>
+  <!-- EXPERIENCE -->
+  <section id="experience" class="section">
+    <div class="section-title">💼 Expérience</div>
     <div class="timeline">
-        <div class="item">
-            <h3>PFE Internship</h3>
-            <p>Full-stack + AI</p>
+      <div class="timeline-item">
+        <div class="date">Janv – Fév 2025</div>
+        <div class="content glass-card">
+          <h3>Stagiaire Full-Stack • ST21 Tunis</h3>
+          <p>Développement d’une application de gestion des congés (Angular + Spring Boot)</p>
         </div>
-        <div class="item">
-            <h3>ST2I</h3>
-            <p>Angular + Spring Boot</p>
+      </div>
+      <div class="timeline-item">
+        <div class="date">Juin – Août 2024</div>
+        <div class="content glass-card">
+          <h3>Stagiaire • Ministère de la Santé Tunis</h3>
+          <p>Conception & implémentation d’un site de gestion des agents hospitaliers (Laravel)</p>
         </div>
+      </div>
+      <div class="timeline-item">
+        <div class="date">Janv – Fév 2024</div>
+        <div class="content glass-card">
+          <h3>Stagiaire • ALMOURABI E-Learning Nabeul</h3>
+          <p>Création d’un forum interactif (Angular + Bootstrap)</p>
+        </div>
+      </div>
     </div>
-</section>
+  </section>
 
-<footer>
-    <p>📧 yama chellv3@gmail.com</p>
-</footer>
+  <!-- CERTIFICATIONS -->
+  <section id="certifs" class="section">
+    <div class="section-title">🏆 Certifications</div>
+    <div class="cert-grid">
+      <div class="cert-card">Aviatrix Multicloud Network Associate</div>
+      <div class="cert-card">Cisco DevNet Associate</div>
+      <div class="cert-card">Microsoft Certified: Azure AI Fundamentals</div>
+      <div class="cert-card">Microsoft 365 Copilot</div>
+      <div class="cert-card">Introduction to Modern AI – Cisco</div>
+    </div>
+  </section>
 
-<script src="script.js"></script>
+  <!-- CONTACT -->
+  <section id="contact" class="section">
+    <div class="section-title">📧 Contact</div>
+    <div class="glass-card contact-card">
+      <p><strong>Email :</strong> yomnachelly3@gmail.com</p>
+      <p><strong>Téléphone :</strong> +216 21 429 814</p>
+      <p><strong>LinkedIn :</strong> <a href="https://www.linkedin.com/in/yomna-chelly/" target="_blank">linkedin.com/in/yomna-chelly</a></p>
+      <p><strong>GitHub :</strong> <a href="https://github.com/yomnachelly" target="_blank">github.com/yomnachelly</a></p>
+      <a href="#" class="btn-primary" style="margin-top: 2rem; display: inline-block;">Télécharger mon CV</a>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Yomna Chelly • Made with neon &amp; passion ✨
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
