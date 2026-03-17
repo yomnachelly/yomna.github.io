@@ -1,122 +1,189 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Yomna Chelly - Web Developer | AI & Cloud Enthusiast</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@700&display=swap">
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yomna Chelly - Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="background"></div>
 
-  <div class="background"></div>
-
-  <!-- Navigation -->
-  <nav class="glass-nav">
-    <div class="nav-content">
-      <div class="logo">YOMNA</div>
-      <div class="nav-links">
-        <a href="#about">À propos</a>
-        <a href="#projects">Projets</a>
-        <a href="#experience">Expérience</a>
-        <a href="#certifications">Certifications</a>
-        <a href="#contact">Contact</a>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Hero -->
-  <section class="hero">
-    <div>
-      <div class="hero-badge">👩‍💻 Web Developer | AI & Cloud Enthusiast</div>
-      <h1 class="hero-title">YOMNA CHELLY</h1>
-      <p id="typing"></p>
-      <div style="margin-top: 2rem;">
-        <a href="https://github.com/yomnachelly" class="btn-primary" target="_blank">Voir mes projets ✨ GitHub</a>
-        <a href="#contact" class="btn-secondary">Me contacter</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- À propos -->
-  <section id="about" class="section">
-    <h2 class="section-title">À propos de moi</h2>
-    <div class="glass-card about-card">
-      <p>Passionnée par le développement web, l’IA et le cloud. Certifiée Microsoft & Cisco, j’aime concevoir des applications modernes, scalables et intuitives. Créative, rigoureuse et toujours en quête de nouveaux défis techniques.</p>
-      <div class="stats">
-        <div>3+ stages</div>
-        <div>5+ projets full-stack</div>
-        <div>5 certifications internationales</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Projets -->
-  <section id="projects" class="section">
-    <h2 class="section-title">Projets Réalisés</h2>
-    
-    <div class="carousel-container">
-      <div class="slides" id="slides">
-
-        <!-- Slide 1 -->
-        <div class="slide">
-          <div class="project-card">
-            <h2>Leave Management</h2>
-            <div class="tech">Angular + Spring Boot + PostgreSQL + JWT</div>
-            <ul>
-              <li>Application complète de gestion des congés</li>
-              <li>Authentification sécurisée + gestion des rôles</li>
-              <li>API REST + tests Postman</li>
-            </ul>
-            <p>(ST21 Tunis – Stage 2025)</p>
-            <a href="https://github.com/yomnachelly/leave-management" class="project-link" target="_blank">Voir sur GitHub →</a>
-          </div>
+    <!-- Navigation -->
+    <nav class="glass-nav">
+        <div class="nav-content">
+            <div class="logo">YOMNA.</div>
+            <div class="nav-links">
+                <a href="#about">À propos</a>
+                <a href="#projects">Projets</a>
+                <a href="#experience">Expérience</a>
+                <a href="#certifications">Certifications</a>
+                <a href="#contact">Contact</a>
+            </div>
         </div>
+    </nav>
 
-        <!-- Slide 2 -->
-        <div class="slide">
-          <div class="project-card">
-            <h2>Hospital Management</h2>
-            <div class="tech">Laravel + MySQL</div>
-            <ul>
-              <li>Gestion des agents, patients, médecins et rendez-vous</li>
-              <li>Projet complet</li>
-            </ul>
-            <p>(Ministère de la Santé – Stage 2024)</p>
-            <a href="https://github.com/yomnachelly/hospital-management" class="project-link" target="_blank">Voir sur GitHub →</a>
-          </div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-badge">👩‍💻 Web Developer | AI & Cloud Enthusiast</span>
+            <h1 class="hero-title">YOMNA CHELLY</h1>
+            <div id="typing"></div>
+            <div class="hero-buttons">
+                <a href="#projects" class="btn-primary">Voir mes projets ✨</a>
+                <a href="https://github.com/yomnachelly" class="btn-secondary" target="_blank">GitHub</a>
+            </div>
         </div>
+        <div class="scroll-indicator">↓ Scroll pour découvrir</div>
+    </section>
 
-        <!-- Slide 3 -->
-        <div class="slide">
-          <div class="project-card">
-            <h2>Cosmetics E-commerce</h2>
-            <div class="tech">Laravel + Tailwind CSS</div>
-            <ul>
-              <li>Plateforme de vente de produits cosmétiques</li>
-              <li>Gestion produits, commandes et clients</li>
-            </ul>
-            <a href="https://github.com/yomnachelly/cosmetics-ecommerce" class="project-link" target="_blank">Voir sur GitHub →</a>
-          </div>
+    <!-- About Section -->
+    <section id="about" class="section">
+        <h2 class="section-title">👩‍💻 À propos de moi</h2>
+        <div class="glass-card about-card">
+            <p>Passionnée par le développement web, l'IA et le cloud. Certifiée Microsoft & Cisco, j'aime concevoir des applications modernes, scalables et intuitives. Créative, rigoureuse et toujours en quête de nouveaux défis techniques.</p>
+            <div class="stats">
+                <span>3+ stages</span>
+                <span>5+ projets full-stack</span>
+                <span>5 certifications internationales</span>
+            </div>
         </div>
+    </section>
 
-        <!-- Ajoute les autres projets de la même façon -->
-        <!-- Slide 4, 5... -->
+    <!-- Projects Section with Carousel -->
+    <section id="projects" class="section">
+        <h2 class="section-title">🚀 Projets Réalisés</h2>
+        <div class="carousel-container">
+            <div class="slides" id="slides">
+                <!-- Slide 1 -->
+                <div class="slide">
+                    <div class="project-card">
+                        <h2>Leave Management</h2>
+                        <p class="tech">Angular + Spring Boot + PostgreSQL + JWT</p>
+                        <ul>
+                            <li>Application complète de gestion des congés</li>
+                            <li>Authentification sécurisée + gestion des rôles</li>
+                            <li>API REST + tests Postman (ST21 Tunis)</li>
+                        </ul>
+                        <a href="#" class="project-link">Voir sur GitHub →</a>
+                    </div>
+                </div>
+                <!-- Slide 2 -->
+                <div class="slide">
+                    <div class="project-card">
+                        <h2>Hospital Management</h2>
+                        <p class="tech">Laravel + MySQL</p>
+                        <ul>
+                            <li>Gestion des agents, patients, médecins et rendez-vous</li>
+                            <li>Projet complet (stage Ministère de la Santé)</li>
+                        </ul>
+                        <a href="#" class="project-link">Voir sur GitHub →</a>
+                    </div>
+                </div>
+                <!-- Slide 3 -->
+                <div class="slide">
+                    <div class="project-card">
+                        <h2>Cosmetics E-commerce</h2>
+                        <p class="tech">Laravel + Tailwind CSS</p>
+                        <ul>
+                            <li>Plateforme de vente de produits cosmétiques</li>
+                            <li>Gestion produits, commandes et clients</li>
+                        </ul>
+                        <a href="#" class="project-link">Voir sur GitHub →</a>
+                    </div>
+                </div>
+                <!-- Slide 4 -->
+                <div class="slide">
+                    <div class="project-card">
+                        <h2>Hotel Management</h2>
+                        <p class="tech">Laravel</p>
+                        <ul>
+                            <li>Gestion des chambres, services et réservations</li>
+                            <li>Système complet de booking</li>
+                        </ul>
+                        <a href="#" class="project-link">Voir sur GitHub →</a>
+                    </div>
+                </div>
+                <!-- Slide 5 -->
+                <div class="slide">
+                    <div class="project-card">
+                        <h2>Interactive Forum</h2>
+                        <p class="tech">Angular + PHP + MySQL</p>
+                        <ul>
+                            <li>Espace d'échange et publication d'articles (stage E-Learning)</li>
+                        </ul>
+                        <a href="#" class="project-link">Voir sur GitHub →</a>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="prev-btn">‹</button>
+            <button class="next-btn">›</button>
+            
+            <div class="dots" id="dots"></div>
+        </div>
+    </section>
 
-      </div>
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+        <h2 class="section-title">💼 Expérience</h2>
+        <div class="timeline glass-card">
+            <div class="timeline-item">
+                <div class="date">Janv – Fév 2025</div>
+                <div class="content">
+                    <h3>Stagiaire Full-Stack • ST21 Tunis</h3>
+                    <p>Développement d'une application de gestion des congés (Angular + Spring Boot)</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="date">Juin – Août 2024</div>
+                <div class="content">
+                    <h3>Stagiaire • Ministère de la Santé Tunis</h3>
+                    <p>Conception & implémentation d'un site de gestion des agents hospitaliers (Laravel)</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="date">Janv – Fév 2024</div>
+                <div class="content">
+                    <h3>Stagiaire • ALMOURABI E-Learning Nabeul</h3>
+                    <p>Création d'un forum interactif (Angular + Bootstrap)</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-      <button class="prev-btn">←</button>
-      <button class="next-btn">→</button>
-      <div class="dots" id="dots"></div>
-    </div>
-  </section>
+    <!-- Certifications Section -->
+    <section id="certifications" class="section">
+        <h2 class="section-title">🏆 Certifications</h2>
+        <div class="cert-grid">
+            <div class="cert-card">Aviatrix Multicloud Network Associate</div>
+            <div class="cert-card">Cisco DevNet Associate</div>
+            <div class="cert-card">Microsoft Certified: Azure AI Fundamentals</div>
+            <div class="cert-card">Microsoft 365 Copilot</div>
+            <div class="cert-card">Introduction to Modern AI – Cisco</div>
+        </div>
+    </section>
 
-  <!-- Experience, Certifications, Contact... (à compléter toi-même) -->
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <h2 class="section-title">📧 Contact</h2>
+        <div class="glass-card contact-card">
+            <p>Email : yomnachelly3@gmail.com</p>
+            <p>Téléphone : +216 21 429 814</p>
+            <p>LinkedIn : linkedin.com/in/yomna-chelly</p>
+            <p>GitHub : github.com/yomnachelly</p>
+            <a href="#" class="btn-primary" style="margin-top: 2rem; display: inline-block;">Télécharger mon CV</a>
+        </div>
+    </section>
 
-  <footer>
-    © 2026 Yomna Chelly • Made with neon & passion ✨
-  </footer>
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Yomna Chelly • Made with neon & passion ✨</p>
+    </footer>
 
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
