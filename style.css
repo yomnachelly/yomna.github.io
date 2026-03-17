@@ -1,4 +1,3 @@
-/* styles.css */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
   font-family: 'Inter', sans-serif;
@@ -156,13 +155,11 @@ body {
 
 @keyframes rotate { to { transform: rotateY(360deg); } }
 
-/* Timeline */
 .timeline { max-width: 800px; margin: 0 auto; }
 .timeline-item { display: flex; gap: 2rem; margin-bottom: 3rem; }
 .date { min-width: 140px; font-weight: 600; color: #a78bfa; }
 .timeline-item:last-child { margin-bottom: 0; }
 
-/* Certs */
 .cert-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -182,11 +179,9 @@ body {
 }
 .cert-card:hover { transform: scale(1.05); box-shadow: 0 0 30px rgba(167,139,250,0.4); }
 
-/* Contact */
 .contact-card { max-width: 620px; margin: 0 auto; text-align: center; font-size: 1.1rem; }
 .contact-card a { color: #a78bfa; }
 
-/* Footer */
 footer {
   text-align: center;
   padding: 3rem;
@@ -194,7 +189,6 @@ footer {
   font-size: 0.9rem;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .carousel { width: 280px; height: 420px; }
   .nav-links { display: none; }
