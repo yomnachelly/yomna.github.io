@@ -10,14 +10,12 @@ let currentText = '';
 let letter = '';
 
 function type() {
-    if (count === texts.length) {
-        count = 0;
-    }
+    if (count === texts.length) count = 0;
     currentText = texts[count];
     letter = currentText.slice(0, ++index);
-    
+
     document.getElementById('typing').textContent = letter;
-    
+
     if (letter.length === currentText.length) {
         count++;
         index = 0;
@@ -27,23 +25,28 @@ function type() {
     }
 }
 
-// Start typing effect when page loads
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
     setTimeout(type, 800);
+
+    // ──────────────── Projects Carousel ────────────────
+    initCarousel('slides', 'dots', '.prev-btn', '.next-btn', '.carousel-container', 3000);
+
+    // ──────────────── Certifications Carousel ────────────────
+    initCarousel('certs-slides', 'certs-dots', '.certs-prev-btn', '.certs-next-btn', '.certs-carousel-container', 4000);
 });
 
-// Projects Carousel
-document.addEventListener('DOMContentLoaded', function() {
-    const slides = document.getElementById('slides');
-    const dotsContainer = document.getElementById('dots');
-    
+function initCarousel(slidesId, dotsId, prevSelector, nextSelector, containerSelector, autoIntervalMs) {
+    const slides = document.getElementById(slidesId);
+    const dotsContainer = document.getElementById(dotsId);
     if (!slides || !dotsContainer) return;
-    
-    const totalSlides = document.querySelectorAll('.slide').length;
-    let currentSlide = 0;
-    let autoSlideInterval;
 
-    // Create dots
+    const slideElements = slides.querySelectorAll('.slide, .certs-slide');
+    const totalSlides = slideElements.length;
+    let currentSlide = 0;
+    let autoInterval;
+
+    // Créer les dots
+    dotsContainer.innerHTML = '';
     for (let i = 0; i < totalSlides; i++) {
         const dot = document.createElement('div');
         dot.classList.add('dot');
@@ -53,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function updateDots() {
-        document.querySelectorAll('.dots .dot').forEach((dot, i) => {
+        dotsContainer.querySelectorAll('.dot').forEach((dot, i) => {
             dot.classList.toggle('active', i === currentSlide);
         });
     }
@@ -72,41 +75,43 @@ document.addEventListener('DOMContentLoaded', function() {
         goToSlide(currentSlide - 1);
     }
 
-    // Add event listeners to buttons
-    const nextBtn = document.querySelector('.next-btn');
-    const prevBtn = document.querySelector('.prev-btn');
-    
-    if (nextBtn && prevBtn) {
-        nextBtn.addEventListener('click', nextSlide);
-        prevBtn.addEventListener('click', prevSlide);
-    }
+    // Boutons
+    const prevBtn = document.querySelector(prevSelector);
+    const nextBtn = document.querySelector(nextSelector);
+
+    if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+    if (nextBtn) nextBtn.addEventListener('click', nextSlide);
 
     // Auto slide
-    function startAutoSlide() {
-        autoSlideInterval = setInterval(nextSlide, 3000);
+    function startAuto() {
+        autoInterval = setInterval(nextSlide, autoIntervalMs);
+    }
+    function stopAuto() {
+        clearInterval(autoInterval);
     }
 
-    function stopAutoSlide() {
-        clearInterval(autoSlideInterval);
-    }
-
-    startAutoSlide();
+    startAuto();
 
     // Pause on hover
-    const carousel = document.querySelector('.carousel-container');
-    if (carousel) {
-        carousel.addEventListener('mouseenter', stopAutoSlide);
-        carousel.addEventListener('mouseleave', startAutoSlide);
+    const container = document.querySelector(containerSelector);
+    if (container) {
+        container.addEventListener('mouseenter', stopAuto);
+        container.addEventListener('mouseleave', startAuto);
     }
 
-    // Touch events
+    // Touch swipe (mobile)
     let touchStartX = 0;
     let touchEndX = 0;
 
-    carousel.addEventListener('touchstart', (e) => {
+    container.addEventListener('touchstart', e => {
         touchStartX = e.changedTouches[0].screenX;
-        stopAutoSlide();
+        stopAuto();
     });
 
-    carousel.addEventListener('touchend', (e) => {
-        touchEndX = e.changedTouches[0
+    container.addEventListener('touchend', e => {
+        touchEndX = e.changedTouches[0].screenX;
+        if (touchStartX - touchEndX > 50) nextSlide();
+        if (touchEndX - touchStartX > 50) prevSlide();
+        startAuto();
+    });
+}
