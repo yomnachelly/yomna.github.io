@@ -1,23 +1,70 @@
 body {
-    font-family: Arial;
     margin: 0;
-    background: #f5f5f5;
-}
-
-header {
-    background: #0f172a;
+    font-family: Arial;
+    background: linear-gradient(135deg, #0f172a, #1e293b);
     color: white;
+}
+
+.hero {
     text-align: center;
-    padding: 40px;
+    padding: 100px 20px;
+    background: linear-gradient(45deg, #9333ea, #06b6d4);
+    animation: fadeIn 2s;
 }
 
-section {
-    padding: 30px;
+.section {
+    padding: 60px;
+    text-align: center;
 }
 
-.project {
-    background: white;
-    padding: 15px;
-    margin: 10px 0;
-    border-radius: 10px;
+.card {
+    background: rgba(255,255,255,0.1);
+    border-radius: 20px;
+    padding: 20px;
+    margin: 20px;
+    display: inline-block;
+    width: 250px;
+    transition: 0.4s;
+}
+
+.card img {
+    width: 100%;
+    border-radius: 15px;
+}
+
+.card:hover {
+    transform: scale(1.1);
+    background: rgba(255,255,255,0.2);
+}
+
+.small {
+    width: 200px;
+}
+
+.timeline .item {
+    margin: 20px;
+    padding: 20px;
+    border-left: 3px solid #06b6d4;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+}
+
+/* animation */
+.hidden {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 1s;
+}
+
+.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes fadeIn {
+    from {opacity:0;}
+    to {opacity:1;}
 }
