@@ -1,44 +1,69 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>Yomna Chelly - Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>Yomna Chelly Portfolio</title>
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<header>
+<header class="hero">
     <h1>Yomna Chelly</h1>
-    <p>Développeuse Web Full-Stack</p>
+    <p>Web Developer | AI & Cloud Enthusiast</p>
 </header>
 
-<section>
-    <h2>👋 À propos de moi</h2>
+<section class="section hidden">
+    <h2>👩‍💻 About Me</h2>
     <p>
-        Je suis étudiante en développement informatique, passionnée par la création
-        d'applications web modernes avec Laravel, Spring Boot et Angular.
+        Passionnée par le développement web, l’IA et le cloud.
+        Certifiée Microsoft & Cisco, j’aime créer des applications modernes et innovantes.
     </p>
 </section>
 
-<section>
-    <h2>🛠️ Compétences</h2>
-    <ul>
-        <li>Laravel, Spring Boot</li>
-        <li>Angular, Tailwind CSS</li>
-        <li>MySQL, PostgreSQL</li>
-    </ul>
-</section>
+<section class="section hidden">
+    <h2>🚀 Projects</h2>
 
-<section>
-    <h2>🚀 Projets</h2>
-    <div class="project">
-        <h3>Site e-commerce cosmétiques</h3>
-        <p>Laravel + MySQL</p>
+    <div class="card">
+        <img src="images/project1.jpg">
+        <h3>AnimalCare Platform</h3>
+        <p>Laravel + Stripe + Mailtrap</p>
     </div>
 
-    <div class="project">
-        <h3>Gestion des congés</h3>
+    <div class="card">
+        <img src="images/project2.jpg">
+        <h3>Leave Management</h3>
         <p>Angular + Spring Boot</p>
+    </div>
+
+</section>
+
+<section class="section hidden">
+    <h2>🏆 Certifications</h2>
+
+    <div class="card small">
+        <img src="images/cert1.png">
+        <p>Cisco AI Certification</p>
+    </div>
+
+    <div class="card small">
+        <img src="images/cert2.png">
+        <p>Aviatrix Multicloud</p>
+    </div>
+
+</section>
+
+<section class="section hidden">
+    <h2>💼 Experience</h2>
+    <div class="timeline">
+        <div class="item">
+            <h3>PFE Internship</h3>
+            <p>Full-stack + AI</p>
+        </div>
+        <div class="item">
+            <h3>ST2I</h3>
+            <p>Angular + Spring Boot</p>
+        </div>
     </div>
 </section>
 
@@ -46,5 +71,6 @@
     <p>📧 yama chellv3@gmail.com</p>
 </footer>
 
+<script src="script.js"></script>
 </body>
 </html>
