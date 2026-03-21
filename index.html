@@ -8,58 +8,771 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body, html {
             margin: 0;
             padding: 0;
-            height: 100%;
+            min-height: 100%;
             overflow-x: hidden;
         }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0d001a;
+            overflow-x: hidden;
+            line-height: 1.6;
+            transition: background 0.3s ease;
+        }
+        
+        /* Conteneur principal pour gérer les fonds */
+        .bg-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+        }
+        
         #vanta-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            transition: opacity 0.8s ease-in-out;
+            opacity: 1;
+        }
+        
+        /* Fond statique pour le reste de la page */
+        #static-bg {
             position: fixed;
             width: 100%;
             height: 100%;
             top: 0;
             left: 0;
-            z-index: -2;
+            z-index: -3;
+            background: linear-gradient(135deg, #1a0033, #0d1b4c, #002b3f, #1a0033);
+            background-size: 300% 300%;
+            animation: breathe 25s ease infinite;
         }
-        .background {
-            display: none; /* Désactive l'ancien fond */
+        
+        @keyframes breathe {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
-        /* Ajustement pour que le contenu reste lisible */
+        
+        /* Styles par défaut (fond rose) */
         .glass-nav, .glass-card, .btn-primary, .btn-secondary {
             backdrop-filter: blur(10px);
             background: rgba(255, 255, 255, 0.15) !important;
             border: 1px solid rgba(255, 182, 193, 0.3) !important;
         }
-        .hero-title, .section-title, p, h1, h2, h3, .date, .content {
-            color: #4a2b3b !important;
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+        
+        .hero-title, .section-title, p, h1, h2, h3, .date, .content, .project-card li, .skill-tag, .contact-card p {
+            transition: color 0.3s ease;
         }
+        
         .skill-tag {
             background: rgba(255, 182, 193, 0.3) !important;
-            color: #4a2b3b !important;
             border: 1px solid #ffb6c1;
         }
+        
         .project-link, .contact-link {
-            color: #ec407a !important;
             background: rgba(255, 255, 255, 0.3) !important;
             border: 1px solid #ffb6c1;
         }
+        
         .project-link:hover, .contact-link:hover {
             background: #ffb6c1 !important;
             color: white !important;
         }
+        
+        /* Styles pour la partie avec fond rose (première partie) */
+        body:not(.scrolled) .hero-title,
+        body:not(.scrolled) .section-title,
+        body:not(.scrolled) p,
+        body:not(.scrolled) h1,
+        body:not(.scrolled) h2,
+        body:not(.scrolled) h3,
+        body:not(.scrolled) .date,
+        body:not(.scrolled) .content,
+        body:not(.scrolled) .project-card li,
+        body:not(.scrolled) .contact-card p {
+            color: #4a2b3b !important;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+        }
+        
+        body:not(.scrolled) .skill-tag {
+            color: #4a2b3b !important;
+        }
+        
+        body:not(.scrolled) .project-link,
+        body:not(.scrolled) .contact-link {
+            color: #ec407a !important;
+        }
+        
+        /* Styles pour la partie avec fond sombre (après scroll) */
+        body.scrolled .hero-title,
+        body.scrolled .section-title,
+        body.scrolled p,
+        body.scrolled h1,
+        body.scrolled h2,
+        body.scrolled h3,
+        body.scrolled .date,
+        body.scrolled .content,
+        body.scrolled .project-card li,
+        body.scrolled .contact-card p {
+            color: #e0e0ff !important;
+            text-shadow: none !important;
+        }
+        
+        body.scrolled .glass-nav,
+        body.scrolled .glass-card,
+        body.scrolled .btn-primary,
+        body.scrolled .btn-secondary {
+            background: rgba(30, 30, 80, 0.22) !important;
+            border: 1px solid rgba(120, 120, 255, 0.18) !important;
+        }
+        
+        body.scrolled .skill-tag {
+            background: rgba(167, 139, 250, 0.15) !important;
+            color: #a78bfa !important;
+            border: 1px solid rgba(167, 139, 250, 0.3) !important;
+        }
+        
+        body.scrolled .project-link,
+        body.scrolled .contact-link {
+            color: #a78bfa !important;
+            background: rgba(167, 139, 250, 0.1) !important;
+            border: 1px solid rgba(167, 139, 250, 0.2) !important;
+        }
+        
+        body.scrolled .project-link:hover,
+        body.scrolled .contact-link:hover {
+            background: rgba(167, 139, 250, 0.25) !important;
+            color: #fff !important;
+        }
+        
+        body.scrolled .section-title {
+            background: linear-gradient(90deg, #c084fc, #60a5fa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent !important;
+        }
+        
+        body.scrolled .stats span {
+            color: #a78bfa !important;
+        }
+        
+        body.scrolled .date {
+            color: #a78bfa !important;
+        }
+        
+        body.scrolled .content h3 {
+            color: #fff !important;
+        }
+        
+        body.scrolled .content p {
+            color: #b0b0ff !important;
+        }
+        
+        body.scrolled footer p {
+            color: #b0b0ff !important;
+        }
+        
+        body.scrolled footer p:first-child {
+            background: linear-gradient(90deg, #a78bfa, #7dd3fc);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent !important;
+        }
+        
+        body.scrolled .footer-link {
+            color: #a78bfa !important;
+            background: rgba(167, 139, 250, 0.1) !important;
+        }
+        
+        body.scrolled .glass-nav a {
+            color: #e0e0ff !important;
+        }
+        
+        body.scrolled .glass-nav a:hover {
+            color: #a78bfa !important;
+        }
+        
+        body.scrolled .hero-badge {
+            background: rgba(139, 92, 246, 0.2) !important;
+            color: #a78bfa !important;
+            border: 1px solid rgba(139, 92, 246, 0.3) !important;
+        }
+        
+        body.scrolled .cert-card-carousel {
+            background: rgba(30, 30, 80, 0.22) !important;
+            border: 1px solid rgba(167, 139, 250, 0.3) !important;
+        }
+        
+        body.scrolled .cert-card-carousel h3 {
+            color: #fff !important;
+        }
+        
+        body.scrolled .cert-card-carousel p {
+            color: #a78bfa !important;
+        }
+        
+        .glass-card, .project-card, .cert-card-carousel, .skill-category {
+            transition: all 0.3s ease;
+        }
+
+        /* Navigation */
+        .glass-nav {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 999px;
+            padding: 0.8rem 2rem;
+            z-index: 1000;
+        }
+
+        .nav-content {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+            font-size: 0.95rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.5rem 1.2rem;
+            border-radius: 999px;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(139, 92, 246, 0.3);
+        }
+
+        .hero-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(3.5rem, 8vw, 7rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        #typing {
+            font-size: 1.35rem;
+            margin: 1rem 0 2.5rem;
+            min-height: 2.2rem;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.9rem;
+            opacity: 0.7;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateX(-50%) translateY(0);}
+            40% {transform: translateX(-50%) translateY(-10px);}
+            60% {transform: translateX(-50%) translateY(-5px);}
+        }
+
+        /* Buttons */
+        .btn-primary, .btn-secondary {
+            display: inline-block;
+            padding: 1rem 2.2rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: linear-gradient(90deg, #7c3aed, #3b82f6);
+            color: white;
+            box-shadow: 0 0 25px rgba(124, 58, 237, 0.5);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 0 40px rgba(124, 58, 237, 0.7);
+        }
+
+        .btn-secondary {
+            margin-left: 1rem;
+        }
+
+        /* Sections */
+        .section {
+            padding: 5rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .glass-card {
+            border-radius: 1.8rem;
+            padding: 2.5rem;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        /* About */
+        .about-card {
+            max-width: 820px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.15rem;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .stats span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .skill-category {
+            padding: 1.8rem;
+        }
+
+        .skill-category h3 {
+            margin-bottom: 1.2rem;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .skill-tag {
+            padding: 0.4rem 1rem;
+            border-radius: 999px;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .skill-tag:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Projects Carousel */
+        .carousel-container {
+            position: relative;
+            max-width: 820px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 20px;
+        }
+
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slide {
+            min-width: 100%;
+            padding: 0 10px;
+        }
+
+        .project-card {
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .project-card h2 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .tech {
+            font-size: 0.95rem;
+            margin-bottom: 1.2rem;
+            font-weight: 500;
+        }
+
+        .project-card ul {
+            text-align: left;
+            margin: 1.2rem 0 1.5rem;
+            padding-left: 1.2rem;
+        }
+
+        .project-card li {
+            margin-bottom: 0.5rem;
+        }
+
+        .project-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .project-link {
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 999px;
+        }
+
+        .prev-btn, .next-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            width: 45px;
+            height: 45px;
+            font-size: 2rem;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10;
+            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .prev-btn { left: 15px; }
+        .next-btn { right: 15px; }
+        .prev-btn:hover, .next-btn:hover { background: #a78bfa; }
+
+        .dots {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(167, 139, 250, 0.4);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .dot.active {
+            background: #a78bfa;
+            transform: scale(1.3);
+            box-shadow: 0 0 15px #a78bfa;
+        }
+
+        /* Certifications Carousel */
+        .certs-carousel-container {
+            position: relative;
+            overflow: hidden;
+            max-width: 1000px;
+            margin: 0 auto;
+            border-radius: 20px;
+        }
+
+        .certs-slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            width: 100%;
+        }
+
+        .certs-slide {
+            flex: 0 0 100%;
+            min-width: 100%;
+            padding: 0 15px;
+        }
+
+        .cert-card-carousel {
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .cert-card-carousel:hover {
+            transform: translateY(-5px);
+        }
+
+        .cert-image {
+            width: 100%;
+            height: 350px;
+            object-fit: contain;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            border: 2px solid rgba(167, 139, 250, 0.3);
+            background: rgba(0, 0, 0, 0.2);
+            padding: 10px;
+        }
+
+        .cert-card-carousel h3 {
+            margin-bottom: 0.8rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .cert-card-carousel p {
+            font-size: 1.1rem;
+        }
+
+        .cert-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .certs-prev-btn, .certs-next-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            font-size: 2.2rem;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10;
+            transition: background 0.3s, transform 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(167, 139, 250, 0.3);
+        }
+
+        .certs-prev-btn { left: 20px; }
+        .certs-next-btn { right: 20px; }
+        .certs-prev-btn:hover, .certs-next-btn:hover {
+            background: #a78bfa;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .certs-dots {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .certs-dots .dot {
+            width: 14px;
+            height: 14px;
+        }
+
+        /* Timeline/Experience */
+        .timeline {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(167, 139, 250, 0.2);
+        }
+
+        .timeline-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .date {
+            min-width: 150px;
+            font-weight: 600;
+        }
+
+        .content h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Contact Section */
+        .contact-card {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+            border-radius: 2rem;
+            padding: 3rem 2.5rem;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+        }
+
+        .contact-card p {
+            margin-bottom: 2.5rem;
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-link {
+            text-decoration: none;
+            font-size: 1.1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1rem 2rem;
+            border-radius: 999px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .contact-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(167, 139, 250, 0.2);
+        }
+
+        .contact-link i {
+            font-size: 1.3rem;
+            transition: transform 0.3s;
+        }
+
+        .contact-link:hover i {
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid rgba(167, 139, 250, 0.2);
+            background: rgba(10, 10, 30, 0.3);
+            backdrop-filter: blur(10px);
+            margin-top: 2rem;
+        }
+
+        footer p {
+            margin: 0.8rem 0;
+            font-size: 1.1rem;
+        }
+
+        footer p:first-child {
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+
+        .footer-link {
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1.5rem;
+            border-radius: 999px;
+        }
+
+        .footer-link:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .glass-nav { padding: 0.6rem 1rem; width: 95%; }
+            .nav-content { gap: 1rem; }
+            .nav-links { gap: 0.8rem; flex-wrap: wrap; justify-content: center; }
+            .nav-links a { font-size: 0.8rem; }
+            .stats { flex-direction: column; gap: 1rem; }
+            .timeline-item { flex-direction: column; gap: 0.5rem; }
+            .date { min-width: auto; }
+            .prev-btn, .next-btn, .certs-prev-btn, .certs-next-btn { width: 35px; height: 35px; font-size: 1.5rem; }
+            .contact-links { flex-direction: column; width: 100%; }
+            .contact-link { width: 100%; justify-content: center; padding: 0.9rem 1.5rem; }
+            .contact-card { padding: 2rem 1.5rem; }
+            .contact-card p { font-size: 1.1rem; }
+            footer { padding: 2rem 1rem; }
+            footer p { font-size: 1rem; }
+        }
+
+        @media (max-width: 480px) {
+            .contact-link { font-size: 1rem; padding: 0.8rem 1.2rem; }
+            .contact-link i { font-size: 1.1rem; }
+            .footer-link { padding: 0.4rem 1rem; font-size: 0.95rem; }
+        }
     </style>
 </head>
 <body>
-    <!-- Nouveau fond animé Vanta.js (oiseaux rose bébé) -->
-    <div id="vanta-bg"></div>
-    
-    <!-- Ancien fond désactivé -->
-    <div class="background"></div>
+    <!-- Fonds -->
+    <div id="static-bg"></div>
+    <div class="bg-container">
+        <div id="vanta-bg"></div>
+    </div>
 
     <!-- Navigation -->
     <nav class="glass-nav">
@@ -76,7 +789,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero" id="hero-section">
         <div class="hero-content">
             <span class="hero-badge">👩‍💻 Web Developer | AI & Cloud Enthusiast</span>
             <h1 class="hero-title">YOMNA CHELLY</h1>
@@ -86,7 +799,7 @@
                 <a href="https://github.com/yomnachelly" class="btn-secondary" target="_blank">GitHub</a>
             </div>
         </div>
-        <div class="scroll-indicator">↓ Scroll pour découvrir</div>
+        <div class="scroll-indicator" id="scroll-indicator">↓ Scroll pour découvrir</div>
     </section>
 
     <!-- About Section -->
@@ -137,16 +850,16 @@
                 </div>
             </div>
             <div class="skill-category glass-card">
-    <h3><i class="fas fa-robot"></i> Intelligence Artificielle</h3>
-    <div class="skill-tags">
-        <span class="skill-tag">OpenAI API</span>
-        <span class="skill-tag">Chatbot IA</span>
-        <span class="skill-tag">FastAPI</span>
-        <span class="skill-tag">NLP</span>
-        <span class="skill-tag">Prompt Engineering</span>
-        <span class="skill-tag">ChromaDB</span>
-    </div>
-</div>
+                <h3><i class="fas fa-robot"></i> Intelligence Artificielle</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">OpenAI API</span>
+                    <span class="skill-tag">Chatbot IA</span>
+                    <span class="skill-tag">FastAPI</span>
+                    <span class="skill-tag">NLP</span>
+                    <span class="skill-tag">Prompt Engineering</span>
+                    <span class="skill-tag">ChromaDB</span>
+                </div>
+            </div>
             <div class="skill-category glass-card">
                 <h3><i class="fas fa-cloud"></i> Cloud & DevOps</h3>
                 <div class="skill-tags">
@@ -163,139 +876,56 @@
     <!-- Projects Section with Carousel -->
     <section id="projects" class="section">
         <h2 class="section-title">🚀 Projets Réalisés</h2>
-        <div class="carousel-container">
+        <div class="carousel-container" id="projects-carousel">
             <div class="slides" id="slides">
-                <!-- Slide 1 - Animal Center -->
                 <div class="slide">
                     <div class="project-card">
-                       
                         <h2>Animal Center</h2>
-                       <lottie-player 
-                        src="https://assets8.lottiefiles.com/packages/lf20_0yfsb3a1.json"
-                        background="transparent"  
-                        speed="1"  
-                        style="width: 100%; height: 180px;"  
-                        loop  
-                        autoplay>
-                        </lottie-player>
+                        <lottie-player src="https://assets8.lottiefiles.com/packages/lf20_0yfsb3a1.json" background="transparent" speed="1" style="width: 100%; height: 180px;" loop autoplay></lottie-player>
                         <p class="tech">Laravel • Bootstrap • SOA • Stripe • Mailtrap</p>
-                        <ul>
-                              <li>Gestion complète d'un centre animalier (patients, services, utilisateurs)</li>
-                                <li>Architecture orientée services (SOA) pour une meilleure modularité</li>
-                                <li>Intégration de paiement en ligne avec Stripe</li>
-                                <li>Gestion des emails (notifications, confirmations) avec Mailtrap</li>
-                                <li>Authentification sécurisée et gestion des rôles</li>
-                                <li>API REST documentée et exploitable</li>
-                        </ul>
-                        <div class="project-links">
-                            <a href="https://github.com/yomnachelly/animal-center.git" class="project-link" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-                          <a href="https://www.youtube.com/watch?v=GmA-vPQfjBg" class="project-link demo-link" target="_blank">
-    <i class="fas fa-play-circle"></i> Demo Video
-</a>
-                        </div>
+                        <ul><li>Gestion complète d'un centre animalier</li><li>Architecture orientée services (SOA)</li><li>Intégration de paiement en ligne avec Stripe</li></ul>
+                        <div class="project-links"><a href="https://github.com/yomnachelly/animal-center.git" class="project-link" target="_blank"><i class="fab fa-github"></i> GitHub</a><a href="https://www.youtube.com/watch?v=GmA-vPQfjBg" class="project-link demo-link" target="_blank"><i class="fas fa-play-circle"></i> Demo Video</a></div>
                     </div>
                 </div>
-                <!-- Slide 2 - Gestion des Congés -->
                 <div class="slide">
                     <div class="project-card">
                         <h2>Gestion des Congés</h2>
-                     <lottie-player 
-                        src="https://assets2.lottiefiles.com/packages/lf20_3rwasyjy.json"
-                        background="transparent" speed="1"
-                        style="width:100%; height:180px;" loop autoplay>
-                        </lottie-player>
+                        <lottie-player src="https://assets2.lottiefiles.com/packages/lf20_3rwasyjy.json" background="transparent" speed="1" style="width:100%; height:180px;" loop autoplay></lottie-player>
                         <p class="tech">Angular • Spring Boot • PostgreSQL • JWT • Swagger</p>
-                        <ul>
-                           <li>Application complète de gestion des congés (employés, demandes, validations)</li>
-                            <li>Architecture frontend/backend séparée (Angular + Spring Boot)</li>
-                            <li>Authentification sécurisée avec JWT et gestion des rôles</li>
-                            <li>API REST documentée avec Swagger (OpenAPI)</li>
-                            <li>Tests des endpoints avec Postman</li>
-                        </ul>
-                        <div class="project-links">
-                            <a href="https://github.com/yomnachelly/gestion_des_conges_stage2.git" class="project-link" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-                          <a href="https://www.youtube.com/watch?v=fE_FdRC_kj8" class="project-link demo-link" target="_blank"> <i class="fas fa-play-circle"></i> Demo Video </a>
-                           
-                                </div>
+                        <ul><li>Application complète de gestion des congés</li><li>Architecture frontend/backend séparée</li><li>Authentification sécurisée avec JWT</li></ul>
+                        <div class="project-links"><a href="https://github.com/yomnachelly/gestion_des_conges_stage2.git" class="project-link" target="_blank"><i class="fab fa-github"></i> GitHub</a><a href="https://www.youtube.com/watch?v=fE_FdRC_kj8" class="project-link demo-link" target="_blank"><i class="fas fa-play-circle"></i> Demo Video</a></div>
                     </div>
                 </div>
-                <!-- Slide 3 - Cosmetics E-commerce -->
                 <div class="slide">
                     <div class="project-card">
-                        
                         <h2>Cosmetics E-commerce</h2>
-                        <lottie-player 
-src="https://assets4.lottiefiles.com/packages/lf20_5ngs2ksb.json"
-background="transparent" speed="1"
-style="width:100%; height:180px;" loop autoplay>
-</lottie-player>
-                       
-                        
+                        <lottie-player src="https://assets4.lottiefiles.com/packages/lf20_5ngs2ksb.json" background="transparent" speed="1" style="width:100%; height:180px;" loop autoplay></lottie-player>
                         <p class="tech">Laravel + Tailwind CSS</p>
-                        <ul>
-                            <li>Plateforme de vente de produits cosmétiques</li>
-                            <li>Gestion produits, commandes et clients</li>
-                            <li>Panneau d'administration</li>
-                        </ul>
-                        <div class="project-links">
-                            <a href="https://github.com/yomnachelly/gestion_produitcosmetique_laravelphp.git" class="project-link" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-                 
-                        </div>
+                        <ul><li>Plateforme de vente de produits cosmétiques</li><li>Gestion produits, commandes et clients</li><li>Panneau d'administration</li></ul>
+                        <div class="project-links"><a href="https://github.com/yomnachelly/gestion_produitcosmetique_laravelphp.git" class="project-link" target="_blank"><i class="fab fa-github"></i> GitHub</a></div>
                     </div>
                 </div>
-                <!-- Slide 4 - Gestion Comptes -->
                 <div class="slide">
                     <div class="project-card">
-                        
                         <h2>Gestion de Comptes</h2>
-                        <lottie-player 
-                        src="https://assets10.lottiefiles.com/packages/lf20_qp1q7mct.json"
-                        background="transparent" speed="1"
-                        style="width:100%; height:180px;" loop autoplay>
-                        </lottie-player>
+                        <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_qp1q7mct.json" background="transparent" speed="1" style="width:100%; height:180px;" loop autoplay></lottie-player>
                         <p class="tech">Angular • Java Backend</p>
-                        <ul>
-                            <li>Application complète de gestion de comptes bancaires</li>
-            <li>Frontend Angular moderne et interface utilisateur intuitive</li>
-            <li>Backend Java fourni par le professeur pour les opérations CRUD</li>
-            <li>Connexion entre Angular et le backend via API REST</li>
-            <li>Gestion sécurisée des données bancaires</li>
-                        </ul>
-                        <div class="project-links">
-                            <a href="https://github.com/yomnachelly/gestion-comptes_miniprojet_angular.git" class="project-link" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-                            
-                        </div>
+                        <ul><li>Application complète de gestion de comptes bancaires</li><li>Frontend Angular moderne</li><li>Connexion entre Angular et le backend via API REST</li></ul>
+                        <div class="project-links"><a href="https://github.com/yomnachelly/gestion-comptes_miniprojet_angular.git" class="project-link" target="_blank"><i class="fab fa-github"></i> GitHub</a></div>
                     </div>
                 </div>
-                <!-- Slide 5 - Interactive Forum -->
                 <div class="slide">
                     <div class="project-card">
-                        
                         <h2>Interactive Forum</h2>
-                        <lottie-player 
-                        src="https://assets9.lottiefiles.com/packages/lf20_vnikrcia.json"
-                        background="transparent" speed="1"
-                        style="width:100%; height:180px;" loop autoplay>
-                        </lottie-player>
+                        <lottie-player src="https://assets9.lottiefiles.com/packages/lf20_vnikrcia.json" background="transparent" speed="1" style="width:100%; height:180px;" loop autoplay></lottie-player>
                         <p class="tech">Angular • Frontend</p>
-                        <ul>
-                            <li>Espace d'échange et publication d'articles interactif</li>
-            <li>Système complet de commentaires côté utilisateur</li>
-            <li>Gestion du profil utilisateur (avatar, bio, informations)</li>
-            <li>Interface moderne et responsive avec Angular</li>
-            <li>Design orienté UX pour faciliter la navigation et l’engagement</li>
-                        </ul>
-                        <div class="project-links">
-                            <a href="#" class="project-link" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-                           
-                        </div>
+                        <ul><li>Espace d'échange et publication d'articles interactif</li><li>Système complet de commentaires</li><li>Gestion du profil utilisateur</li></ul>
+                        <div class="project-links"><a href="#" class="project-link" target="_blank"><i class="fab fa-github"></i> GitHub</a></div>
                     </div>
                 </div>
             </div>
-            
             <button class="prev-btn" aria-label="Projet précédent">‹</button>
             <button class="next-btn" aria-label="Projet suivant">›</button>
-            
             <div class="dots" id="dots"></div>
         </div>
     </section>
@@ -304,142 +934,27 @@ style="width:100%; height:180px;" loop autoplay>
     <section id="experience" class="section">
         <h2 class="section-title">💼 Expérience</h2>
         <div class="timeline glass-card">
-            <div class="timeline-item">
-                <div class="date">Fév – Avril 2025</div>
-                <div class="content">
-                    <h3>Stagiaire Full-Stack • ST21 Tunis</h3>
-                    <p>Développement d'une application de gestion des congés (Angular + Spring Boot + PostgreSQL)</p>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="date">Juin – Août 2024</div>
-                <div class="content">
-                    <h3>Stagiaire Développeuse Web • Ministère de la Santé Tunis</h3>
-                    <p>Conception & implémentation d'un site de gestion des agents hospitaliers </p>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="date">Janv – Fév 2024</div>
-                <div class="content">
-                    <h3>Stagiaire • ALMOURABI E-Learning Nabeul</h3>
-                    <p>Création d'un forum interactif (Angular )</p>
-                </div>
-            </div>
+            <div class="timeline-item"><div class="date">Fév – Avril 2025</div><div class="content"><h3>Stagiaire Full-Stack • ST21 Tunis</h3><p>Développement d'une application de gestion des congés (Angular + Spring Boot + PostgreSQL)</p></div></div>
+            <div class="timeline-item"><div class="date">Juin – Août 2024</div><div class="content"><h3>Stagiaire Développeuse Web • Ministère de la Santé Tunis</h3><p>Conception & implémentation d'un site de gestion des agents hospitaliers</p></div></div>
+            <div class="timeline-item"><div class="date">Janv – Fév 2024</div><div class="content"><h3>Stagiaire • ALMOURABI E-Learning Nabeul</h3><p>Création d'un forum interactif (Angular)</p></div></div>
         </div>
     </section>
 
-    <!-- Certifications Section with Carousel -->
+    <!-- Certifications Section -->
     <section id="certifications" class="section">
         <h2 class="section-title">🏆 Certifications</h2>
-        <div class="certs-carousel-container">
+        <div class="certs-carousel-container" id="certs-carousel">
             <div class="certs-slides" id="certs-slides">
-                <!-- 1. LinkedIn - IA Générative -->
-                <div class="certs-slide">
-                    <a href="https://www.linkedin.com/learning/certificates/3c1a528cbcbb74177c5db53c89571aaa6b67224a2581d9a5fa117ac3a1ad7fc8" 
-                       target="_blank" class="cert-link">
-                        <div class="cert-card-carousel">
-                            <img src="certifications/linkedin-preparer-carriere-ia-generative.jpg"
-                                 alt="Préparer votre carrière dans l'IA générative"
-                                 class="cert-image"
-                                 onerror="this.src='https://via.placeholder.com/600x400/1a0033/a78bfa?text=Certification+IA'">
-                            <h3>Carrière dans l'IA Générative</h3>
-                            <p>LinkedIn Learning + Microsoft • Août 2025</p>
-                        </div>
-                    </a>
-                </div>
-                
-                <!-- 2. Cisco - Introduction to Modern AI -->
-                <div class="certs-slide">
-                    <a href="#" target="_blank" class="cert-link">
-                        <div class="cert-card-carousel">
-                            <img src="certifications/cisco-introduction-modern-ai.jpg"
-                                 alt="Introduction to Modern AI"
-                                 class="cert-image"
-                                 onerror="this.src='https://via.placeholder.com/600x400/1a0033/a78bfa?text=Cisco+Modern+AI'">
-                            <h3>Introduction to Modern AI</h3>
-                            <p>Cisco / SupCom • Sep 2025</p>
-                        </div>
-                    </a>
-                </div>
-                
-                <!-- 3. Cisco DevNet Associate -->
-                <div class="certs-slide">
-                    <a href="https://www.credly.com/badges/2614043d-9762-4626-96c4-63673e08dba8/public_url" 
-                       target="_blank" class="cert-link">
-                        <div class="cert-card-carousel">
-                            <img src="certifications/cisco-devnet-associate.jpg"
-                                 alt="DevNet Associate"
-                                 class="cert-image"
-                                 onerror="this.src='https://via.placeholder.com/600x400/1a0033/a78bfa?text=DevNet+Associate'">
-                            <h3>DevNet Associate</h3>
-                            <p>Cisco / Iset Zaghouan • Juil 2025</p>
-                        </div>
-                    </a>
-                </div>
-                
-                <!-- 4. Aviatrix Multicloud Network Associate -->
-                <div class="certs-slide">
-                    <a href="https://www.credly.com/badges/2fb27117-c3ca-4ad3-a504-3803a8182854/public_url" 
-                       target="_blank" class="cert-link">
-                        <div class="cert-card-carousel">
-                            <img src="certifications/aviatrix-multicloud-network-associate.jpg"
-                                 alt="Multicloud Network Associate"
-                                 class="cert-image"
-                                 onerror="this.src='https://via.placeholder.com/600x400/1a0033/a78bfa?text=Aviatrix'">
-                            <h3>Multicloud Network Associate</h3>
-                            <p>Aviatrix • 2025-2028</p>
-                        </div>
-                    </a>
-                </div>
-                
-                <!-- 5. Elements of AI -->
-                <div class="certs-slide">
-                    <a href="https://www.elementsofai.com/" target="_blank" class="cert-link">
-                        <div class="cert-card-carousel">
-                            <img src="certifications/elements-of-ai.jpg"
-                                 alt="Elements of AI"
-                                 class="cert-image"
-                                 onerror="this.src='https://via.placeholder.com/600x400/1a0033/a78bfa?text=Elements+of+AI'">
-                            <h3>Elements of AI</h3>
-                            <p>MinnaLearn / Village Capital / Google</p>
-                        </div>
-                    </a>
-                </div>
-                
-                <!-- 6. 365 Data Cleaning with pandas -->
-                <div class="certs-slide">
-                    <a href="https://learn.365datascience.com/certificates/CC-D0B460DD63/" 
-                       target="_blank" class="cert-link">
-                        <div class="cert-card-carousel">
-                            <img src="certifications/365-data-cleaning-pandas.jpg"
-                                 alt="Data Cleaning with pandas"
-                                 class="cert-image"
-                                 onerror="this.src='https://via.placeholder.com/600x400/1a0033/a78bfa?text=Data+Cleaning'">
-                            <h3>Data Cleaning with pandas</h3>
-                            <p>365 Data Science • Nov 2025</p>
-                        </div>
-                    </a>
-                </div>
-                
-                <!-- 7. 365 Introduction to Python -->
-                <div class="certs-slide">
-                    <a href="https://learn.365datascience.com/certificates/CC-E9DD618535/" 
-                       target="_blank" class="cert-link">
-                        <div class="cert-card-carousel">
-                            <img src="certifications/365-introduction-python.jpg"
-                                 alt="Introduction to Python"
-                                 class="cert-image"
-                                 onerror="this.src='https://via.placeholder.com/600x400/1a0033/a78bfa?text=Python'">
-                            <h3>Introduction to Python</h3>
-                            <p>365 Data Science • Nov 2025</p>
-                        </div>
-                    </a>
-                </div>
+                <div class="certs-slide"><a href="https://www.linkedin.com/learning/certificates/3c1a528cbcbb74177c5db53c89571aaa6b67224a2581d9a5fa117ac3a1ad7fc8" target="_blank" class="cert-link"><div class="cert-card-carousel"><img src="certifications/linkedin-preparer-carriere-ia-generative.jpg" alt="Certification IA" class="cert-image" onerror="this.src='https://via.placeholder.com/600x400/1a0033/a78bfa?text=Certification+IA'"><h3>Carrière dans l'IA Générative</h3><p>LinkedIn Learning + Microsoft • Août 2025</p></div></a></div>
+                <div class="certs-slide"><a href="#" target="_blank" class="cert-link"><div class="cert-card-carousel"><img src="certifications/cisco-introduction-modern-ai.jpg" alt="Introduction to Modern AI" class="cert-image" onerror="this.src='https://via.placeholder.com/600x400/1a0033/a78bfa?text=Cisco+Modern+AI'"><h3>Introduction to Modern AI</h3><p>Cisco / SupCom • Sep 2025</p></div></a></div>
+                <div class="certs-slide"><a href="https://www.credly.com/badges/2614043d-9762-4626-96c4-63673e08dba8/public_url" target="_blank" class="cert-link"><div class="cert-card-carousel"><img src="certifications/cisco-devnet-associate.jpg" alt="DevNet Associate" class="cert-image" onerror="this.src='https://via.placeholder.com/600x400/1a0033/a78bfa?text=DevNet+Associate'"><h3>DevNet Associate</h3><p>Cisco / Iset Zaghouan • Juil 2025</p></div></a></div>
+                <div class="certs-slide"><a href="https://www.credly.com/badges/2fb27117-c3ca-4ad3-a504-3803a8182854/public_url" target="_blank" class="cert-link"><div class="cert-card-carousel"><img src="certifications/aviatrix-multicloud-network-associate.jpg" alt="Multicloud Network Associate" class="cert-image" onerror="this.src='https://via.placeholder.com/600x400/1a0033/a78bfa?text=Aviatrix'"><h3>Multicloud Network Associate</h3><p>Aviatrix • 2025-2028</p></div></a></div>
+                <div class="certs-slide"><a href="https://www.elementsofai.com/" target="_blank" class="cert-link"><div class="cert-card-carousel"><img src="certifications/elements-of-ai.jpg" alt="Elements of AI" class="cert-image" onerror="this.src='https://via.placeholder.com/600x400/1a0033/a78bfa?text=Elements+of+AI'"><h3>Elements of AI</h3><p>MinnaLearn / Village Capital / Google</p></div></a></div>
+                <div class="certs-slide"><a href="https://learn.365datascience.com/certificates/CC-D0B460DD63/" target="_blank" class="cert-link"><div class="cert-card-carousel"><img src="certifications/365-data-cleaning-pandas.jpg" alt="Data Cleaning" class="cert-image" onerror="this.src='https://via.placeholder.com/600x400/1a0033/a78bfa?text=Data+Cleaning'"><h3>Data Cleaning with pandas</h3><p>365 Data Science • Nov 2025</p></div></a></div>
+                <div class="certs-slide"><a href="https://learn.365datascience.com/certificates/CC-E9DD618535/" target="_blank" class="cert-link"><div class="cert-card-carousel"><img src="certifications/365-introduction-python.jpg" alt="Introduction to Python" class="cert-image" onerror="this.src='https://via.placeholder.com/600x400/1a0033/a78bfa?text=Python'"><h3>Introduction to Python</h3><p>365 Data Science • Nov 2025</p></div></a></div>
             </div>
-
             <button class="certs-prev-btn" aria-label="Certification précédente">‹</button>
             <button class="certs-next-btn" aria-label="Certification suivante">›</button>
-
             <div class="certs-dots" id="certs-dots"></div>
         </div>
     </section>
@@ -450,18 +965,10 @@ style="width:100%; height:180px;" loop autoplay>
         <div class="glass-card contact-card">
             <p>Intéressé(e) par mon profil ? N'hésitez pas à me contacter !</p>
             <div class="contact-links">
-                <a href="mailto:yomna.chelly@example.com" class="contact-link">
-                    <i class="fas fa-envelope"></i> yomna.chelly@example.com
-                </a>
-                <a href="https://www.linkedin.com/in/yomna-chelly/" target="_blank" class="contact-link">
-                    <i class="fab fa-linkedin"></i> LinkedIn
-                </a>
-                <a href="https://www.facebook.com/yomna.chelly.5/" target="_blank" class="contact-link">
-                    <i class="fab fa-facebook"></i> Facebook
-                </a>
-                <a href="https://github.com/yomnachelly" target="_blank" class="contact-link">
-                    <i class="fab fa-github"></i> GitHub
-                </a>
+                <a href="mailto:yomna.chelly@example.com" class="contact-link"><i class="fas fa-envelope"></i> yomna.chelly@example.com</a>
+                <a href="https://www.linkedin.com/in/yomna-chelly/" target="_blank" class="contact-link"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                <a href="https://www.facebook.com/yomna.chelly.5/" target="_blank" class="contact-link"><i class="fab fa-facebook"></i> Facebook</a>
+                <a href="https://github.com/yomnachelly" target="_blank" class="contact-link"><i class="fab fa-github"></i> GitHub</a>
             </div>
         </div>
     </section>
@@ -472,13 +979,12 @@ style="width:100%; height:180px;" loop autoplay>
         <p><a href="https://github.com/yomnachelly/yomna.github.io" target="_blank" class="footer-link"><i class="fab fa-github"></i> Code source du portfolio</a></p>
     </footer>
 
-    <!-- Scripts Vanta.js (three.js d'abord) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.birds.min.js"></script>
-
     <script>
-        // Initialisation du fond animé
-        VANTA.BIRDS({
+        let vantaEffect = null;
+        
+        vantaEffect = VANTA.BIRDS({
             el: "#vanta-bg",
             mouseControls: true,
             touchControls: true,
@@ -499,8 +1005,243 @@ style="width:100%; height:180px;" loop autoplay>
             alignment: 20,
             cohesion: 20
         });
+        
+        function checkAndChangeBackground() {
+            const scrollIndicator = document.getElementById('scroll-indicator');
+            const vantaBg = document.getElementById('vanta-bg');
+            if (!scrollIndicator || !vantaBg) return;
+            const rect = scrollIndicator.getBoundingClientRect();
+            const isScrolledPast = rect.bottom < 0 || window.scrollY > window.innerHeight - 50;
+            if (isScrolledPast) {
+                vantaBg.style.opacity = '0';
+                document.body.classList.add('scrolled');
+            } else {
+                vantaBg.style.opacity = '1';
+                document.body.classList.remove('scrolled');
+            }
+        }
+        
+        window.addEventListener('scroll', checkAndChangeBackground);
+        window.addEventListener('load', checkAndChangeBackground);
+        window.addEventListener('resize', checkAndChangeBackground);
+        
+        // Typing effect
+        const typingElement = document.getElementById('typing');
+        if (typingElement) {
+            const texts = ["Développeuse Web Full-Stack", "IA & Cloud Enthusiast", "Créative & Rigoureuse"];
+            let textIndex = 0, charIndex = 0, isDeleting = false;
+            function typeEffect() {
+                const currentText = texts[textIndex];
+                if (isDeleting) {
+                    typingElement.textContent = currentText.substring(0, charIndex - 1);
+                    charIndex--;
+                } else {
+                    typingElement.textContent = currentText.substring(0, charIndex + 1);
+                    charIndex++;
+                }
+                if (!isDeleting && charIndex === currentText.length) {
+                    isDeleting = true;
+                    setTimeout(typeEffect, 2000);
+                } else if (isDeleting && charIndex === 0) {
+                    isDeleting = false;
+                    textIndex = (textIndex + 1) % texts.length;
+                    setTimeout(typeEffect, 500);
+                } else {
+                    setTimeout(typeEffect, isDeleting ? 50 : 100);
+                }
+            }
+            typeEffect();
+        }
+        
+        // ==================== PROJETS CAROUSEL (automatique 1.5s) ====================
+        const slides = document.getElementById('slides');
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
+        const dotsContainer = document.getElementById('dots');
+        let currentIndex = 0;
+        let totalSlides = document.querySelectorAll('.slide').length;
+        let projectsInterval = null;
+        let isProjectsTransitioning = false;
+        
+        function updateProjectsCarousel() {
+            if (isProjectsTransitioning) return;
+            isProjectsTransitioning = true;
+            slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+            document.querySelectorAll('#dots .dot').forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentIndex);
+            });
+            setTimeout(() => {
+                isProjectsTransitioning = false;
+            }, 500);
+        }
+        
+        function nextProjectsSlide() {
+            if (isProjectsTransitioning) return;
+            currentIndex = (currentIndex + 1) % totalSlides;
+            updateProjectsCarousel();
+        }
+        
+        function prevProjectsSlide() {
+            if (isProjectsTransitioning) return;
+            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+            updateProjectsCarousel();
+        }
+        
+        function startProjectsAuto() {
+            if (projectsInterval) clearInterval(projectsInterval);
+            projectsInterval = setInterval(nextProjectsSlide, 1500);
+        }
+        
+        function stopProjectsAuto() {
+            if (projectsInterval) {
+                clearInterval(projectsInterval);
+                projectsInterval = null;
+            }
+        }
+        
+        function createProjectsDots() {
+            dotsContainer.innerHTML = '';
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('div');
+                dot.classList.add('dot');
+                if (i === currentIndex) dot.classList.add('active');
+                dot.addEventListener('click', () => {
+                    if (!isProjectsTransitioning) {
+                        stopProjectsAuto();
+                        currentIndex = i;
+                        updateProjectsCarousel();
+                        startProjectsAuto();
+                    }
+                });
+                dotsContainer.appendChild(dot);
+            }
+        }
+        
+        if (slides && totalSlides > 0) {
+            createProjectsDots();
+            prevBtn?.addEventListener('click', () => {
+                stopProjectsAuto();
+                prevProjectsSlide();
+                startProjectsAuto();
+            });
+            nextBtn?.addEventListener('click', () => {
+                stopProjectsAuto();
+                nextProjectsSlide();
+                startProjectsAuto();
+            });
+            
+            // Pause on hover
+            const projectsContainer = document.getElementById('projects-carousel');
+            if (projectsContainer) {
+                projectsContainer.addEventListener('mouseenter', stopProjectsAuto);
+                projectsContainer.addEventListener('mouseleave', startProjectsAuto);
+            }
+            
+            startProjectsAuto();
+        }
+        
+        // ==================== CERTIFICATIONS CAROUSEL (automatique 1.5s) ====================
+        const certsSlides = document.getElementById('certs-slides');
+        const certsPrev = document.querySelector('.certs-prev-btn');
+        const certsNext = document.querySelector('.certs-next-btn');
+        const certsDots = document.getElementById('certs-dots');
+        let certsCurrentIndex = 0;
+        let certsTotalSlides = document.querySelectorAll('.certs-slide').length;
+        let certsInterval = null;
+        let isCertsTransitioning = false;
+        
+        function updateCertsCarousel() {
+            if (isCertsTransitioning) return;
+            isCertsTransitioning = true;
+            certsSlides.style.transform = `translateX(-${certsCurrentIndex * 100}%)`;
+            document.querySelectorAll('#certs-dots .dot').forEach((dot, i) => {
+                dot.classList.toggle('active', i === certsCurrentIndex);
+            });
+            setTimeout(() => {
+                isCertsTransitioning = false;
+            }, 500);
+        }
+        
+        function nextCertsSlide() {
+            if (isCertsTransitioning) return;
+            certsCurrentIndex = (certsCurrentIndex + 1) % certsTotalSlides;
+            updateCertsCarousel();
+        }
+        
+        function prevCertsSlide() {
+            if (isCertsTransitioning) return;
+            certsCurrentIndex = (certsCurrentIndex - 1 + certsTotalSlides) % certsTotalSlides;
+            updateCertsCarousel();
+        }
+        
+        function startCertsAuto() {
+            if (certsInterval) clearInterval(certsInterval);
+            certsInterval = setInterval(nextCertsSlide, 1500);
+        }
+        
+        function stopCertsAuto() {
+            if (certsInterval) {
+                clearInterval(certsInterval);
+                certsInterval = null;
+            }
+        }
+        
+        function createCertsDots() {
+            certsDots.innerHTML = '';
+            for (let i = 0; i < certsTotalSlides; i++) {
+                const dot = document.createElement('div');
+                dot.classList.add('dot');
+                if (i === certsCurrentIndex) dot.classList.add('active');
+                dot.addEventListener('click', () => {
+                    if (!isCertsTransitioning) {
+                        stopCertsAuto();
+                        certsCurrentIndex = i;
+                        updateCertsCarousel();
+                        startCertsAuto();
+                    }
+                });
+                certsDots.appendChild(dot);
+            }
+        }
+        
+        if (certsSlides && certsTotalSlides > 0) {
+            createCertsDots();
+            certsPrev?.addEventListener('click', () => {
+                stopCertsAuto();
+                prevCertsSlide();
+                startCertsAuto();
+            });
+            certsNext?.addEventListener('click', () => {
+                stopCertsAuto();
+                nextCertsSlide();
+                startCertsAuto();
+            });
+            
+            // Pause on hover
+            const certsContainer = document.getElementById('certs-carousel');
+            if (certsContainer) {
+                certsContainer.addEventListener('mouseenter', stopCertsAuto);
+                certsContainer.addEventListener('mouseleave', startCertsAuto);
+            }
+            
+            startCertsAuto();
+        }
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('.nav-links a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
     </script>
-    
-    <script src="script.js"></script>
 </body>
 </html>
