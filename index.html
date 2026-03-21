@@ -30,6 +30,79 @@
             --radius-lg: 8px;
         }
 
+        /* ── DARK MODE VARIABLES ── */
+        body.dark {
+            --ink: #f0ede6;
+            --ink-light: #ccc8bf;
+            --ink-muted: #8a8278;
+            --cream: #131210;
+            --cream-warm: #1a1814;
+            --gold: #c9963a;
+            --gold-light: #d4a85c;
+            --gold-pale: #2a2010;
+            --white: #1e1c18;
+            --border: rgba(201,150,58,0.2);
+            --border-soft: rgba(255,255,255,0.07);
+            --shadow-sm: 0 1px 12px rgba(0,0,0,0.3);
+            --shadow: 0 4px 32px rgba(0,0,0,0.4);
+            --shadow-lg: 0 12px 56px rgba(0,0,0,0.5);
+        }
+
+        body.dark nav {
+            background: rgba(19,18,16,0.95);
+        }
+
+        body.dark #contact {
+            background: #0d0c0a;
+        }
+
+        body.dark footer {
+            background: #0d0c0a;
+        }
+
+        body.dark .form-group input,
+        body.dark .form-group select,
+        body.dark .form-group textarea {
+            background: rgba(255,255,255,0.04);
+            border-color: rgba(255,255,255,0.08);
+        }
+
+        /* ── THEME & LANG TOGGLE BUTTONS ── */
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .ctrl-btn {
+            background: none;
+            border: 1.5px solid var(--border-soft);
+            border-radius: 4px;
+            cursor: pointer;
+            color: var(--ink-muted);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            padding: 0.32rem 0.65rem;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+            white-space: nowrap;
+        }
+
+        .ctrl-btn:hover {
+            color: var(--gold);
+            border-color: var(--gold);
+            background: var(--gold-pale);
+        }
+
+        .ctrl-btn.active {
+            color: var(--gold);
+            border-color: var(--gold);
+        }
+
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; font-size: 16px; }
 
@@ -1135,14 +1208,22 @@
         <span class="nav-brand-text">Yomna<span>.</span>Chelly</span>
     </a>
     <ul class="nav-links">
-        <li><a href="#about">À propos</a></li>
-        <li><a href="#skills">Compétences</a></li>
-        <li><a href="#experience">Expérience</a></li>
-        <li><a href="#projects">Projets</a></li>
-        <li><a href="#certifications">Certifications</a></li>
-        <li><a href="#contact" class="nav-cta">Contact</a></li>
+        <li><a href="#about" data-i18n="nav.about">À propos</a></li>
+        <li><a href="#skills" data-i18n="nav.skills">Compétences</a></li>
+        <li><a href="#experience" data-i18n="nav.experience">Expérience</a></li>
+        <li><a href="#projects" data-i18n="nav.projects">Projets</a></li>
+        <li><a href="#certifications" data-i18n="nav.certs">Certifications</a></li>
+        <li><a href="#contact" class="nav-cta" data-i18n="nav.contact">Contact</a></li>
     </ul>
-    <button class="nav-mobile-toggle" aria-label="Menu"><i class="fas fa-bars"></i></button>
+    <div class="nav-controls">
+        <button class="ctrl-btn" id="lang-btn" onclick="toggleLang()" title="Changer la langue">
+            <i class="fas fa-globe"></i> <span id="lang-label">EN</span>
+        </button>
+        <button class="ctrl-btn" id="theme-btn" onclick="toggleTheme()" title="Mode sombre">
+            <i class="fas fa-moon" id="theme-icon"></i>
+        </button>
+        <button class="nav-mobile-toggle" aria-label="Menu"><i class="fas fa-bars"></i></button>
+    </div>
 </nav>
 
 <!-- ── HERO ── -->
@@ -1150,10 +1231,10 @@
     <div class="hero-left">
         <div class="status-pill">
             <span class="status-dot"></span>
-            Disponible · Ouverte aux opportunités
+            <span data-i18n="hero.status">Disponible · Ouverte aux opportunités</span>
         </div>
 
-        <p class="hero-eyebrow">Développeuse Full-Stack</p>
+        <p class="hero-eyebrow" data-i18n="hero.eyebrow">Développeuse Full-Stack</p>
 
         <h1 class="hero-name">
             Yomna<br>
@@ -1165,14 +1246,14 @@
         </div>
         <style>@keyframes blink { 50% { opacity: 0; } }</style>
 
-        <p class="hero-desc">
+        <p class="hero-desc" data-i18n="hero.desc">
             Spécialisée Angular & Spring Boot, passionnée par l'IA et le Cloud.
             Je conçois des applications robustes et scalables qui résolvent de vrais problèmes.
         </p>
 
         <div class="hero-actions">
-            <a href="#projects" class="btn-primary"><i class="fas fa-eye"></i> Voir mes projets</a>
-            <a href="CV_Yomna_Chelly.pdf" download class="btn-cv"><i class="fas fa-download"></i> Télécharger CV</a>
+            <a href="#projects" class="btn-primary"><i class="fas fa-eye"></i> <span data-i18n="hero.btn.projects">Voir mes projets</span></a>
+            <a href="CV_Yomna_Chelly.pdf" download class="btn-cv"><i class="fas fa-download"></i> <span data-i18n="hero.btn.cv">Télécharger CV</span></a>
             <a href="https://github.com/yomnachelly" target="_blank" class="btn-ghost"><i class="fab fa-github"></i> GitHub</a>
             <a href="https://www.linkedin.com/in/yomna-chelly/" target="_blank" class="btn-ghost"><i class="fab fa-linkedin"></i> LinkedIn</a>
         </div>
@@ -1183,38 +1264,38 @@
             <div class="hero-card-icon"><i class="fas fa-briefcase"></i></div>
             <div>
                 <div class="hero-card-num">4+</div>
-                <div class="hero-card-label">Stages en entreprise</div>
+                <div class="hero-card-label" data-i18n="stat.internships">Stages en entreprise</div>
             </div>
         </div>
         <div class="hero-card reveal" style="transition-delay:.08s">
             <div class="hero-card-icon"><i class="fas fa-code"></i></div>
             <div>
                 <div class="hero-card-num">20+</div>
-                <div class="hero-card-label">Projets Full-Stack</div>
+                <div class="hero-card-label" data-i18n="stat.projects">Projets Full-Stack</div>
             </div>
         </div>
         <div class="hero-card reveal" style="transition-delay:.16s">
             <div class="hero-card-icon"><i class="fas fa-certificate"></i></div>
             <div>
                 <div class="hero-card-num">20+</div>
-                <div class="hero-card-label">Certifications</div>
+                <div class="hero-card-label" data-i18n="stat.certs">Certifications</div>
             </div>
         </div>
         <div class="hero-card reveal" style="transition-delay:.24s">
             <div class="hero-card-icon"><i class="fas fa-map-marker-alt"></i></div>
             <div>
                 <div class="hero-card-num" style="font-size:1.2rem">Nabeul</div>
-                <div class="hero-card-label">Tunisie · Open to remote</div>
+                <div class="hero-card-label" data-i18n="stat.location">Tunisie · Open to remote</div>
             </div>
         </div>
 
         <div class="search-banner reveal" style="transition-delay:.32s">
-            <div class="search-banner-title"><i class="fas fa-search" style="color:var(--gold)"></i> Je recherche activement</div>
+            <div class="search-banner-title"><i class="fas fa-search" style="color:var(--gold)"></i> <span data-i18n="search.title">Je recherche activement</span></div>
             <div class="search-tags">
-                <span class="search-tag">💼 Stage PFE</span>
-                <span class="search-tag">🚀 CDI Full-Stack</span>
-                <span class="search-tag">☁️ IA / Cloud</span>
-                <span class="search-tag">📍 Tunisie · Remote</span>
+                <span class="search-tag" data-i18n="search.t1">💼 Stage PFE</span>
+                <span class="search-tag" data-i18n="search.t2">🚀 CDI Full-Stack</span>
+                <span class="search-tag" data-i18n="search.t3">☁️ IA / Cloud</span>
+                <span class="search-tag" data-i18n="search.t4">📍 Tunisie · Remote</span>
             </div>
         </div>
     </div>
@@ -1228,40 +1309,40 @@
         <div class="inner">
             <div class="about-grid">
                 <div class="about-text reveal">
-                    <div class="s-label">Profil</div>
-                    <h2 class="s-title">Développeuse passionnée,<br><span class="it">orientée résultats</span></h2>
-                    <p>
+                    <div class="s-label" data-i18n="about.label">Profil</div>
+                    <h2 class="s-title" data-i18n="about.title">Développeuse passionnée,<br><span class="it">orientée résultats</span></h2>
+                    <p data-i18n="about.p1">
                         Je suis <strong>Yomna Chelly</strong>, étudiante en génie logiciel avec une expérience concrète acquise à travers <strong>4 stages</strong> dans des environnements variés : startup, administration publique et secteur éducatif.
                     </p>
-                    <p>
+                    <p data-i18n="about.p2">
                         Mon expertise couvre le développement d'applications <strong>Full-Stack</strong> avec Angular et Spring Boot, avec une forte appétence pour <strong>l'IA générative</strong> et les architectures <strong>Cloud</strong>. Je m'adapte rapidement et livre du code propre, documenté et maintenable.
                     </p>
                     <div class="about-callout">
                         <i class="fas fa-graduation-cap" style="color:var(--gold)"></i>
-                        Licence DSI · ISET Zagouan — Stage PFE en cours
+                        <span data-i18n="about.callout">Licence DSI · ISET Zagouan — Stage PFE en cours</span>
                     </div>
                 </div>
 
                 <div class="info-list reveal" style="transition-delay:.15s">
                     <div class="info-row">
                         <i class="fas fa-user"></i>
-                        <span class="info-key">Nom</span>
+                        <span class="info-key" data-i18n="info.name">Nom</span>
                         <span class="info-val">Yomna Chelly</span>
                     </div>
                     <div class="info-row">
                         <i class="fas fa-code"></i>
-                        <span class="info-key">Spécialité</span>
-                        <span class="info-val">Full-Stack · IA · Cloud</span>
+                        <span class="info-key" data-i18n="info.spec">Spécialité</span>
+                        <span class="info-val" data-i18n="info.specval">Full-Stack · IA · Cloud</span>
                     </div>
                     <div class="info-row">
                         <i class="fas fa-map-marker-alt"></i>
-                        <span class="info-key">Localisation</span>
-                        <span class="info-val">Nabeul, Tunisie (Open to Remote)</span>
+                        <span class="info-key" data-i18n="info.loc">Localisation</span>
+                        <span class="info-val" data-i18n="info.locval">Nabeul, Tunisie (Open to Remote)</span>
                     </div>
                     <div class="info-row">
                         <i class="fas fa-language"></i>
-                        <span class="info-key">Langues</span>
-                        <span class="info-val">Arabe · Français · Anglais</span>
+                        <span class="info-key" data-i18n="info.lang">Langues</span>
+                        <span class="info-val" data-i18n="info.langval">Arabe · Français · Anglais</span>
                     </div>
                     <div class="info-row">
                         <i class="fas fa-envelope"></i>
@@ -1280,8 +1361,8 @@
                     </div>
                     <div class="info-row">
                         <i class="fas fa-circle-check" style="color:#22c55e"></i>
-                        <span class="info-key">Statut</span>
-                        <span class="info-val" style="color:#16a34a;font-weight:600">Disponible immédiatement</span>
+                        <span class="info-key" data-i18n="info.status">Statut</span>
+                        <span class="info-val" style="color:#16a34a;font-weight:600" data-i18n="info.statusval">Disponible immédiatement</span>
                     </div>
                 </div>
             </div>
@@ -1294,8 +1375,8 @@
 <!-- ── SKILLS ── -->
 <section id="skills">
     <div class="section-wrap">
-        <div class="s-label">Compétences techniques</div>
-        <h2 class="s-title">Stack <span class="it">maîtrisée</span></h2>
+        <div class="s-label" data-i18n="skills.label">Compétences techniques</div>
+        <h2 class="s-title" data-i18n="skills.title">Stack <span class="it">maîtrisée</span></h2>
         <div class="skills-grid">
             <div class="skill-card reveal">
                 <div class="skill-card-head">
@@ -1386,26 +1467,26 @@
 <div id="experience">
     <div class="section-wrap full">
         <div class="inner">
-            <div class="s-label">Parcours professionnel</div>
-            <h2 class="s-title">Expériences <span class="it">terrain</span></h2>
+            <div class="s-label" data-i18n="exp.label">Parcours professionnel</div>
+            <h2 class="s-title" data-i18n="exp.title">Expériences <span class="it">terrain</span></h2>
             <div class="timeline">
                 <div class="exp-item reveal">
                     <div class="exp-dot" style="border-color:#22c55e;box-shadow:0 0 0 4px rgba(34,197,94,0.12)"></div>
                     <div class="exp-header">
                         <div>
-                            <div class="exp-title">Stagiaire PFE — Développeuse Full-Stack</div>
-                            <div class="exp-company" style="color:#22c55e">ISET Zagouan · <span style="font-size:0.76rem;font-weight:400;color:var(--ink-muted)">En cours</span></div>
+                            <div class="exp-title" data-i18n="exp1.title">Stagiaire PFE — Développeuse Full-Stack</div>
+                            <div class="exp-company" style="color:#22c55e">ISET Zagouan · <span style="font-size:0.76rem;font-weight:400;color:var(--ink-muted)" data-i18n="exp.ongoing">En cours</span></div>
                         </div>
-                        <div class="exp-badge" style="border-color:rgba(34,197,94,0.35);color:#16a34a">2025 — En cours 🟢</div>
+                        <div class="exp-badge" style="border-color:rgba(34,197,94,0.35);color:#16a34a" data-i18n="exp1.date">2025 — En cours 🟢</div>
                     </div>
-                    <p class="exp-desc">
+                    <p class="exp-desc" data-i18n="exp1.desc">
                         Projet de fin d'études pour l'obtention de la Licence en Développement des Systèmes d'Information (DSI).
                         Conception et développement d'une solution Full-Stack complète dans un environnement professionnel.
                     </p>
                     <div class="exp-tags">
                         <span class="exp-tag">PFE · Licence DSI</span>
                         <span class="exp-tag">Full-Stack</span>
-                        <span class="exp-tag">En cours</span>
+                        <span class="exp-tag" data-i18n="exp.ongoing">En cours</span>
                     </div>
                 </div>
 
@@ -1413,12 +1494,12 @@
                     <div class="exp-dot"></div>
                     <div class="exp-header">
                         <div>
-                            <div class="exp-title">Stagiaire Développeuse Full-Stack</div>
+                            <div class="exp-title" data-i18n="exp2.title">Stagiaire Développeuse Full-Stack</div>
                             <div class="exp-company">ST21 — Tunis</div>
                         </div>
-                        <div class="exp-badge">Fév – Avril 2025</div>
+                        <div class="exp-badge" data-i18n="exp2.date">Fév – Avril 2025</div>
                     </div>
-                    <p class="exp-desc">
+                    <p class="exp-desc" data-i18n="exp2.desc">
                         Développement from scratch d'une application de gestion des congés pour une entreprise.
                         Architecture Angular / Spring Boot / PostgreSQL, authentification JWT, documentation Swagger et déploiement.
                         Réduction de 70% du temps de traitement des demandes RH.
@@ -1436,12 +1517,12 @@
                     <div class="exp-dot"></div>
                     <div class="exp-header">
                         <div>
-                            <div class="exp-title">Stagiaire Développeuse Web</div>
+                            <div class="exp-title" data-i18n="exp3.title">Stagiaire Développeuse Web</div>
                             <div class="exp-company">Ministère de la Santé — Tunis</div>
                         </div>
-                        <div class="exp-badge">Juin – Août 2024</div>
+                        <div class="exp-badge" data-i18n="exp3.date">Juin – Août 2024</div>
                     </div>
-                    <p class="exp-desc">
+                    <p class="exp-desc" data-i18n="exp3.desc">
                         Conception et développement d'un système de gestion des agents hospitaliers.
                         Accent sur la performance, la sécurité des données et l'ergonomie pour les agents administratifs.
                         Interface 100% responsive déployée en production.
@@ -1458,12 +1539,12 @@
                     <div class="exp-dot"></div>
                     <div class="exp-header">
                         <div>
-                            <div class="exp-title">Stagiaire Développeuse Frontend</div>
+                            <div class="exp-title" data-i18n="exp4.title">Stagiaire Développeuse Frontend</div>
                             <div class="exp-company">ALMOURABI E-Learning — Nabeul</div>
                         </div>
-                        <div class="exp-badge">Janv – Fév 2024</div>
+                        <div class="exp-badge" data-i18n="exp4.date">Janv – Fév 2024</div>
                     </div>
-                    <p class="exp-desc">
+                    <p class="exp-desc" data-i18n="exp4.desc">
                         Développement d'un forum interactif pour une plateforme e-learning.
                         Intégration d'un système de commentaires en temps réel, gestion des profils et rôles utilisateurs.
                     </p>
@@ -1483,8 +1564,8 @@
 <!-- ── PROJECTS ── -->
 <section id="projects">
     <div class="section-wrap">
-        <div class="s-label">Réalisations</div>
-        <h2 class="s-title">Projets <span class="it">significatifs</span></h2>
+        <div class="s-label" data-i18n="proj.label">Réalisations</div>
+        <h2 class="s-title" data-i18n="proj.title">Projets <span class="it">significatifs</span></h2>
         <div class="projects-grid">
 
             <div class="project-card featured reveal">
@@ -1605,14 +1686,14 @@
 <div id="certifications">
     <div class="section-wrap full">
         <div class="inner">
-            <div class="s-label">Formations & Certifications</div>
-            <h2 class="s-title">Certifications <span class="it">officielles</span></h2>
+            <div class="s-label" data-i18n="certs.label">Formations & Certifications</div>
+            <h2 class="s-title" data-i18n="certs.title">Certifications <span class="it">officielles</span></h2>
             <div class="certs-grid">
                 <a href="https://www.linkedin.com/learning/certificates/3c1a528cbcbb74177c5db53c89571aaa6b67224a2581d9a5fa117ac3a1ad7fc8" target="_blank" class="cert-card reveal">
                     <img src="certifications/linkedin-preparer-carriere-ia-generative.jpg" alt="Carrière dans l'IA Générative" class="cert-img" onerror="this.style.display='none'">
                     <div class="cert-issuer">LinkedIn + Microsoft</div>
                     <div class="cert-name">Carrière dans l'IA Générative</div>
-                    <div class="cert-date">2025 · Voir le certificat →</div>
+                    <div class="cert-date">2025 · <span data-i18n="cert.view">Voir le certificat</span> →</div>
                 </a>
                 <a href="#" target="_blank" class="cert-card reveal" style="transition-delay:.05s">
                     <img src="certifications/cisco-introduction-modern-ai.jpg" alt="Introduction to Modern AI" class="cert-img" onerror="this.style.display='none'">
@@ -1624,36 +1705,36 @@
                     <img src="certifications/cisco-devnet-associate.jpg" alt="DevNet Associate" class="cert-img" onerror="this.style.display='none'">
                     <div class="cert-issuer">Cisco</div>
                     <div class="cert-name">DevNet Associate</div>
-                    <div class="cert-date">2025 · Voir le certificat →</div>
+                    <div class="cert-date">2025 · <span data-i18n="cert.view">Voir le certificat</span> →</div>
                 </a>
                 <a href="https://www.credly.com/badges/2fb27117-c3ca-4ad3-a504-3803a8182854/public_url" target="_blank" class="cert-card reveal" style="transition-delay:.15s">
                     <img src="certifications/aviatrix-multicloud-network-associate.jpg" alt="Multicloud Network Associate" class="cert-img" onerror="this.style.display='none'">
                     <div class="cert-issuer">Aviatrix</div>
                     <div class="cert-name">Multicloud Network Associate</div>
-                    <div class="cert-date">2025 – 2028 · Voir le certificat →</div>
+                    <div class="cert-date">2025 – 2028 · <span data-i18n="cert.view">Voir le certificat</span> →</div>
                 </a>
                 <a href="https://www.elementsofai.com/" target="_blank" class="cert-card reveal" style="transition-delay:.2s">
                     <img src="certifications/elements-of-ai.jpg" alt="Elements of AI" class="cert-img" onerror="this.style.display='none'">
                     <div class="cert-issuer">MinnaLearn / Google</div>
                     <div class="cert-name">Elements of AI</div>
-                    <div class="cert-date">Voir le certificat →</div>
+                    <div class="cert-date"><span data-i18n="cert.view">Voir le certificat</span> →</div>
                 </a>
                 <a href="https://learn.365datascience.com/certificates/CC-D0B460DD63/" target="_blank" class="cert-card reveal" style="transition-delay:.25s">
                     <img src="certifications/365-data-cleaning-pandas.jpg" alt="Data Cleaning with pandas" class="cert-img" onerror="this.style.display='none'">
                     <div class="cert-issuer">365 Data Science</div>
                     <div class="cert-name">Data Cleaning with pandas</div>
-                    <div class="cert-date">2025 · Voir le certificat →</div>
+                    <div class="cert-date">2025 · <span data-i18n="cert.view">Voir le certificat</span> →</div>
                 </a>
                 <a href="https://learn.365datascience.com/certificates/CC-E9DD618535/" target="_blank" class="cert-card reveal" style="transition-delay:.3s">
                     <img src="certifications/365-introduction-python.jpg" alt="Introduction to Python" class="cert-img" onerror="this.style.display='none'">
                     <div class="cert-issuer">365 Data Science</div>
                     <div class="cert-name">Introduction to Python</div>
-                    <div class="cert-date">2025 · Voir le certificat →</div>
+                    <div class="cert-date">2025 · <span data-i18n="cert.view">Voir le certificat</span> →</div>
                 </a>
                 <div class="cert-card reveal" style="transition-delay:.35s; border-style:dashed; display:flex; align-items:center; justify-content:center; text-align:center; min-height:180px;">
                     <div>
                         <div style="font-size:2rem;color:var(--gold);margin-bottom:0.4rem;font-family:'DM Serif Display',serif">+13</div>
-                        <div style="font-size:0.78rem;color:var(--ink-muted);font-weight:700;text-transform:uppercase;letter-spacing:0.07em">Autres certifications</div>
+                        <div style="font-size:0.78rem;color:var(--ink-muted);font-weight:700;text-transform:uppercase;letter-spacing:0.07em" data-i18n="cert.more">Autres certifications</div>
                         <div style="font-size:0.72rem;color:var(--ink-muted);margin-top:0.3rem">LinkedIn Learning, Coursera…</div>
                     </div>
                 </div>
@@ -1669,18 +1750,18 @@
             <div class="contact-grid">
                 <div class="reveal">
                     <div class="s-label contact-label">Contact</div>
-                    <h2 class="contact-title">Travaillons<br><span class="it">ensemble</span></h2>
-                    <p class="contact-text">
+                    <h2 class="contact-title" data-i18n="contact.title">Travaillons<br><span class="it">ensemble</span></h2>
+                    <p class="contact-text" data-i18n="contact.desc">
                         Je suis disponible pour des opportunités en <strong style="color:white">développement Full-Stack</strong>,
                         <strong style="color:white">IA</strong> ou <strong style="color:white">Cloud</strong> — stage de fin d'études,
                         CDI ou mission freelance.
                     </p>
                     <div class="contact-items">
-                     <a href="mailto:yomnachelly3@gmail.com" class="contact-item">
+                        <a href="mailto:yomnachelly3@gmail.com" class="contact-item">
                             <div class="contact-icon"><i class="fas fa-envelope"></i></div>
                             <div>
                                 <div class="contact-item-lbl">Email</div>
-                               <div class="contact-item-val">yomnachelly3@gmail.com</div>
+                                <div class="contact-item-val">yomnachelly3@gmail.com</div>
                             </div>
                         </a>
                         <a href="https://www.linkedin.com/in/yomna-chelly/" target="_blank" class="contact-item">
@@ -1702,44 +1783,44 @@
 
                 <div class="reveal" style="transition-delay:.15s">
                     <div class="contact-form">
-                        <div class="form-head"><i class="fas fa-paper-plane"></i> Envoyer un message</div>
+                        <div class="form-head"><i class="fas fa-paper-plane"></i> <span data-i18n="form.title">Envoyer un message</span></div>
                         <div class="form-row">
                             <div class="form-group">
-                                <label>Votre nom</label>
+                                <label data-i18n="form.name">Votre nom</label>
                                 <input type="text" id="form-name" placeholder="Ahmed Ben Ali" />
                             </div>
                             <div class="form-group">
-                                <label>Votre email</label>
+                                <label data-i18n="form.email">Votre email</label>
                                 <input type="email" id="form-email" placeholder="contact@entreprise.com" />
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group">
-                                <label>Entreprise</label>
-                                <input type="text" id="form-company" placeholder="Nom de votre société" />
+                                <label data-i18n="form.company">Entreprise</label>
+                                <input type="text" id="form-company" data-i18n-placeholder="form.company.ph" placeholder="Nom de votre société" />
                             </div>
                             <div class="form-group">
-                                <label>Type d'opportunité</label>
+                                <label data-i18n="form.type">Type d'opportunité</label>
                                 <select id="form-type">
-                                    <option value="" disabled selected>Choisir…</option>
-                                    <option value="stage">Stage PFE</option>
-                                    <option value="cdi">CDI / CDD</option>
-                                    <option value="freelance">Mission Freelance</option>
-                                    <option value="collaboration">Collaboration projet</option>
-                                    <option value="autre">Autre</option>
+                                    <option value="" disabled selected data-i18n="form.choose">Choisir…</option>
+                                    <option value="stage" data-i18n="form.opt.stage">Stage PFE</option>
+                                    <option value="cdi" data-i18n="form.opt.cdi">CDI / CDD</option>
+                                    <option value="freelance" data-i18n="form.opt.freelance">Mission Freelance</option>
+                                    <option value="collaboration" data-i18n="form.opt.collab">Collaboration projet</option>
+                                    <option value="autre" data-i18n="form.opt.other">Autre</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group full">
-                            <label>Message</label>
-                            <textarea id="form-message" placeholder="Décrivez l'opportunité, le poste, les technologies utilisées…"></textarea>
+                            <label data-i18n="form.message">Message</label>
+                            <textarea id="form-message" data-i18n-placeholder="form.message.ph" placeholder="Décrivez l'opportunité, le poste, les technologies utilisées…"></textarea>
                         </div>
                         <button class="btn-send" id="btn-send" onclick="handleFormSubmit()">
-                            <i class="fas fa-paper-plane"></i> Envoyer le message
+                            <i class="fas fa-paper-plane"></i> <span data-i18n="form.send">Envoyer le message</span>
                         </button>
                         <div class="form-success" id="form-success">
                             <i class="fas fa-circle-check"></i>
-                            Message envoyé avec succès ! Je vous répondrai dans les plus brefs délais.
+                            <span data-i18n="form.success">Message envoyé avec succès ! Je vous répondrai dans les plus brefs délais.</span>
                         </div>
                     </div>
                 </div>
@@ -1754,7 +1835,7 @@
     <div class="footer-copy">© 2026 · Développeuse Full-Stack · Nabeul, Tunisie</div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // ── NAV SCROLL ──
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
@@ -1838,14 +1919,167 @@
         setTimeout(() => {
             btn.innerHTML = '<i class="fas fa-paper-plane"></i> Envoyer le message';
             btn.disabled = false;
-            success.classList.add('show');
+            document.getElementById('form-success').classList.add('show');
             ['form-name','form-email','form-company','form-message'].forEach(id => {
                 document.getElementById(id).value = '';
             });
             document.getElementById('form-type').value = '';
-            setTimeout(() => success.classList.remove('show'), 6000);
+            setTimeout(() => document.getElementById('form-success').classList.remove('show'), 6000);
         }, 1200);
     }
+
+    // ── DARK MODE ──
+    function toggleTheme() {
+        const isDark = document.body.classList.toggle('dark');
+        const icon = document.getElementById('theme-icon');
+        const btn = document.getElementById('theme-btn');
+        icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+        btn.classList.toggle('active', isDark);
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    }
+
+    // Restore saved theme
+    if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark');
+        document.getElementById('theme-icon').className = 'fas fa-sun';
+        document.getElementById('theme-btn').classList.add('active');
+    }
+
+    // ── TRANSLATIONS ──
+    const translations = {
+        fr: {
+            'nav.about': 'À propos', 'nav.skills': 'Compétences', 'nav.experience': 'Expérience',
+            'nav.projects': 'Projets', 'nav.certs': 'Certifications', 'nav.contact': 'Contact',
+            'hero.status': 'Disponible · Ouverte aux opportunités',
+            'hero.eyebrow': 'Développeuse Full-Stack',
+            'hero.desc': 'Spécialisée Angular & Spring Boot, passionnée par l\'IA et le Cloud. Je conçois des applications robustes et scalables qui résolvent de vrais problèmes.',
+            'hero.btn.projects': 'Voir mes projets', 'hero.btn.cv': 'Télécharger CV',
+            'stat.internships': 'Stages en entreprise', 'stat.projects': 'Projets Full-Stack',
+            'stat.certs': 'Certifications', 'stat.location': 'Tunisie · Open to remote',
+            'search.title': 'Je recherche activement', 'search.t1': '💼 Stage PFE',
+            'search.t2': '🚀 CDI Full-Stack', 'search.t3': '☁️ IA / Cloud', 'search.t4': '📍 Tunisie · Remote',
+            'about.label': 'Profil',
+            'about.title': 'Développeuse passionnée,<br><span class="it">orientée résultats</span>',
+            'about.p1': 'Je suis <strong>Yomna Chelly</strong>, étudiante en génie logiciel avec une expérience concrète acquise à travers <strong>4 stages</strong> dans des environnements variés : startup, administration publique et secteur éducatif.',
+            'about.p2': 'Mon expertise couvre le développement d\'applications <strong>Full-Stack</strong> avec Angular et Spring Boot, avec une forte appétence pour <strong>l\'IA générative</strong> et les architectures <strong>Cloud</strong>. Je m\'adapte rapidement et livre du code propre, documenté et maintenable.',
+            'about.callout': 'Licence DSI · ISET Zagouan — Stage PFE en cours',
+            'info.name': 'Nom', 'info.spec': 'Spécialité', 'info.specval': 'Full-Stack · IA · Cloud',
+            'info.loc': 'Localisation', 'info.locval': 'Nabeul, Tunisie (Open to Remote)',
+            'info.lang': 'Langues', 'info.langval': 'Arabe · Français · Anglais',
+            'info.status': 'Statut', 'info.statusval': 'Disponible immédiatement',
+            'skills.label': 'Compétences techniques', 'skills.title': 'Stack <span class="it">maîtrisée</span>',
+            'exp.label': 'Parcours professionnel', 'exp.title': 'Expériences <span class="it">terrain</span>',
+            'exp.ongoing': 'En cours',
+            'exp1.title': 'Stagiaire PFE — Développeuse Full-Stack', 'exp1.date': '2025 — En cours 🟢',
+            'exp1.desc': 'Projet de fin d\'études pour l\'obtention de la Licence en Développement des Systèmes d\'Information (DSI). Conception et développement d\'une solution Full-Stack complète dans un environnement professionnel.',
+            'exp2.title': 'Stagiaire Développeuse Full-Stack', 'exp2.date': 'Fév – Avril 2025',
+            'exp2.desc': 'Développement from scratch d\'une application de gestion des congés pour une entreprise. Architecture Angular / Spring Boot / PostgreSQL, authentification JWT, documentation Swagger et déploiement. Réduction de 70% du temps de traitement des demandes RH.',
+            'exp3.title': 'Stagiaire Développeuse Web', 'exp3.date': 'Juin – Août 2024',
+            'exp3.desc': 'Conception et développement d\'un système de gestion des agents hospitaliers. Accent sur la performance, la sécurité des données et l\'ergonomie. Interface 100% responsive déployée en production.',
+            'exp4.title': 'Stagiaire Développeuse Frontend', 'exp4.date': 'Janv – Fév 2024',
+            'exp4.desc': 'Développement d\'un forum interactif pour une plateforme e-learning. Intégration d\'un système de commentaires en temps réel, gestion des profils et rôles utilisateurs.',
+            'proj.label': 'Réalisations', 'proj.title': 'Projets <span class="it">significatifs</span>',
+            'certs.label': 'Formations & Certifications', 'certs.title': 'Certifications <span class="it">officielles</span>',
+            'cert.view': 'Voir le certificat', 'cert.more': 'Autres certifications',
+            'contact.title': 'Travaillons<br><span class="it">ensemble</span>',
+            'contact.desc': 'Je suis disponible pour des opportunités en <strong style="color:white">développement Full-Stack</strong>, <strong style="color:white">IA</strong> ou <strong style="color:white">Cloud</strong> — stage de fin d\'études, CDI ou mission freelance.',
+            'form.title': 'Envoyer un message', 'form.name': 'Votre nom', 'form.email': 'Votre email',
+            'form.company': 'Entreprise', 'form.company.ph': 'Nom de votre société',
+            'form.type': "Type d'opportunité", 'form.choose': 'Choisir…',
+            'form.opt.stage': 'Stage PFE', 'form.opt.cdi': 'CDI / CDD',
+            'form.opt.freelance': 'Mission Freelance', 'form.opt.collab': 'Collaboration projet',
+            'form.opt.other': 'Autre', 'form.message': 'Message',
+            'form.message.ph': 'Décrivez l\'opportunité, le poste, les technologies utilisées…',
+            'form.send': 'Envoyer le message',
+            'form.success': 'Message envoyé avec succès ! Je vous répondrai dans les plus brefs délais.',
+            'typed.roles': 'Développeuse Full-Stack Angular & Spring Boot|Passionnée IA & Cloud|Ingénieure Logiciel'
+        },
+        en: {
+            'nav.about': 'About', 'nav.skills': 'Skills', 'nav.experience': 'Experience',
+            'nav.projects': 'Projects', 'nav.certs': 'Certifications', 'nav.contact': 'Contact',
+            'hero.status': 'Available · Open to opportunities',
+            'hero.eyebrow': 'Full-Stack Developer',
+            'hero.desc': 'Specialized in Angular & Spring Boot, passionate about AI and Cloud. I build robust, scalable applications that solve real problems.',
+            'hero.btn.projects': 'View my projects', 'hero.btn.cv': 'Download CV',
+            'stat.internships': 'Internships', 'stat.projects': 'Full-Stack Projects',
+            'stat.certs': 'Certifications', 'stat.location': 'Tunisia · Open to remote',
+            'search.title': 'Actively looking for', 'search.t1': '💼 Final Internship',
+            'search.t2': '🚀 Full-Stack Position', 'search.t3': '☁️ AI / Cloud Role', 'search.t4': '📍 Tunisia · Remote',
+            'about.label': 'Profile',
+            'about.title': 'Passionate developer,<br><span class="it">results-driven</span>',
+            'about.p1': 'I am <strong>Yomna Chelly</strong>, a software engineering student with hands-on experience through <strong>4 internships</strong> in diverse environments: startups, public administration, and the education sector.',
+            'about.p2': 'My expertise covers <strong>Full-Stack</strong> application development with Angular and Spring Boot, with a strong interest in <strong>generative AI</strong> and <strong>Cloud</strong> architectures. I adapt quickly and deliver clean, documented, maintainable code.',
+            'about.callout': 'BSc in Information Systems · ISET Zagouan — Final internship ongoing',
+            'info.name': 'Name', 'info.spec': 'Specialty', 'info.specval': 'Full-Stack · AI · Cloud',
+            'info.loc': 'Location', 'info.locval': 'Nabeul, Tunisia (Open to Remote)',
+            'info.lang': 'Languages', 'info.langval': 'Arabic · French · English',
+            'info.status': 'Status', 'info.statusval': 'Available immediately',
+            'skills.label': 'Technical skills', 'skills.title': 'Mastered <span class="it">stack</span>',
+            'exp.label': 'Professional journey', 'exp.title': 'Field <span class="it">experience</span>',
+            'exp.ongoing': 'Ongoing',
+            'exp1.title': 'PFE Intern — Full-Stack Developer', 'exp1.date': '2025 — Ongoing 🟢',
+            'exp1.desc': 'Final year project for a BSc in Information Systems Development (DSI). Design and development of a complete Full-Stack solution in a professional environment.',
+            'exp2.title': 'Full-Stack Developer Intern', 'exp2.date': 'Feb – Apr 2025',
+            'exp2.desc': 'Built from scratch a leave management application for a company. Angular / Spring Boot / PostgreSQL architecture, JWT auth, Swagger docs and deployment. Reduced HR request processing time by 70%.',
+            'exp3.title': 'Web Developer Intern', 'exp3.date': 'Jun – Aug 2024',
+            'exp3.desc': 'Designed and developed a hospital staff management system for the Ministry of Health. Focus on performance, data security and ergonomics. 100% responsive interface deployed to production.',
+            'exp4.title': 'Frontend Developer Intern', 'exp4.date': 'Jan – Feb 2024',
+            'exp4.desc': 'Developed an interactive forum for an e-learning platform. Integrated a real-time comment system with user profile and role management.',
+            'proj.label': 'Work', 'proj.title': 'Significant <span class="it">projects</span>',
+            'certs.label': 'Training & Certifications', 'certs.title': 'Official <span class="it">certifications</span>',
+            'cert.view': 'View certificate', 'cert.more': 'Other certifications',
+            'contact.title': 'Let\'s work<br><span class="it">together</span>',
+            'contact.desc': 'I am available for opportunities in <strong style="color:white">Full-Stack development</strong>, <strong style="color:white">AI</strong> or <strong style="color:white">Cloud</strong> — final internship, permanent contract or freelance mission.',
+            'form.title': 'Send a message', 'form.name': 'Your name', 'form.email': 'Your email',
+            'form.company': 'Company', 'form.company.ph': 'Your company name',
+            'form.type': 'Opportunity type', 'form.choose': 'Choose…',
+            'form.opt.stage': 'Final Internship', 'form.opt.cdi': 'Full-time / Contract',
+            'form.opt.freelance': 'Freelance Mission', 'form.opt.collab': 'Project collaboration',
+            'form.opt.other': 'Other', 'form.message': 'Message',
+            'form.message.ph': 'Describe the opportunity, position, technologies used…',
+            'form.send': 'Send message',
+            'form.success': 'Message sent successfully! I will reply as soon as possible.',
+            'typed.roles': 'Full-Stack Angular & Spring Boot Developer|AI & Cloud Enthusiast|Software Engineer'
+        }
+    };
+
+    let currentLang = localStorage.getItem('lang') || 'fr';
+
+    function applyTranslations(lang) {
+        const t = translations[lang];
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (t[key] !== undefined) el.innerHTML = t[key];
+        });
+        document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+            const key = el.getAttribute('data-i18n-placeholder');
+            if (t[key] !== undefined) el.placeholder = t[key];
+        });
+        // Update select options
+        document.querySelectorAll('option[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (t[key] !== undefined) el.textContent = t[key];
+        });
+        // Update typed roles
+        if (t['typed.roles']) {
+            roles.length = 0;
+            t['typed.roles'].split('|').forEach(r => roles.push(r));
+            roleIdx = 0; charIdx = 0; isDeleting = false;
+        }
+        document.documentElement.lang = lang;
+    }
+
+    function toggleLang() {
+        currentLang = currentLang === 'fr' ? 'en' : 'fr';
+        localStorage.setItem('lang', currentLang);
+        document.getElementById('lang-label').textContent = currentLang === 'fr' ? 'EN' : 'FR';
+        applyTranslations(currentLang);
+    }
+
+    // Init language
+    applyTranslations(currentLang);
+    document.getElementById('lang-label').textContent = currentLang === 'fr' ? 'EN' : 'FR';
+
 </script>
 </body>
 </html>
