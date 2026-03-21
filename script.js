@@ -1,8 +1,8 @@
 // Typing effect
 const texts = [
-    "Passionnée par le développement web",
-    "Certifiée Microsoft & Cisco",
-    "Créatrice d'applications modernes"
+    "Développeuse Web Full-Stack",
+    "IA & Cloud Enthusiast",
+    "Créative & Rigoureuse"
 ];
 let count = 0;
 let index = 0;
@@ -22,9 +22,9 @@ function type() {
     if (letter.length === currentText.length) {
         count++;
         index = 0;
-        setTimeout(type, 1800);
+        setTimeout(type, 2000);
     } else {
-        setTimeout(type, 70);
+        setTimeout(type, 100);
     }
 }
 
@@ -50,30 +50,15 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
-
-    // Handle contact link in navigation
-    const contactLink = document.querySelector('a[href="#contact"]');
-    if (contactLink) {
-        contactLink.addEventListener('click', function(e) {
-            e.preventDefault();
-            const contactSection = document.getElementById('contact');
-            if (contactSection) {
-                contactSection.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
-    }
 });
 
 function initCarousel(slidesId, dotsId, prevSelector, nextSelector, containerSelector, autoIntervalMs) {
-    const slides = document.getElementById(slidesId);
+    const slidesContainer = document.getElementById(slidesId);
     const dotsContainer = document.getElementById(dotsId);
     
-    if (!slides || !dotsContainer) return;
+    if (!slidesContainer || !dotsContainer) return;
 
-    const slideElements = slides.querySelectorAll('.slide, .certs-slide');
+    const slideElements = slidesContainer.querySelectorAll('.slide, .certs-slide');
     const totalSlides = slideElements.length;
     
     if (totalSlides === 0) return;
@@ -99,7 +84,8 @@ function initCarousel(slidesId, dotsId, prevSelector, nextSelector, containerSel
     }
 
     function updateDots() {
-        dotsContainer.querySelectorAll('.dot').forEach((dot, i) => {
+        const dots = dotsContainer.querySelectorAll('.dot');
+        dots.forEach((dot, i) => {
             dot.classList.toggle('active', i === currentSlide);
         });
     }
@@ -109,12 +95,12 @@ function initCarousel(slidesId, dotsId, prevSelector, nextSelector, containerSel
         
         isTransitioning = true;
         currentSlide = (n + totalSlides) % totalSlides;
-        slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+        slidesContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
         updateDots();
         
         setTimeout(() => {
             isTransitioning = false;
-        }, 500); // Match transition duration
+        }, 500);
     }
 
     function nextSlide() {
@@ -129,17 +115,23 @@ function initCarousel(slidesId, dotsId, prevSelector, nextSelector, containerSel
         }
     }
 
-    // Boutons
+    // Boutons - correction: prevBtn doit aller à la slide précédente, nextBtn à la suivante
     const prevBtn = document.querySelector(prevSelector);
     const nextBtn = document.querySelector(nextSelector);
 
-    if (prevBtn) prevBtn.addEventListener('click', nextSlide); // Fixed: prevBtn should go to previous
-    if (nextBtn) nextBtn.addEventListener('click', prevSlide); // Fixed: nextBtn should go to next
+    if (prevBtn) {
+        prevBtn.removeEventListener('click', prevSlide);
+        prevBtn.addEventListener('click', prevSlide);
+    }
+    if (nextBtn) {
+        nextBtn.removeEventListener('click', nextSlide);
+        nextBtn.addEventListener('click', nextSlide);
+    }
 
     // Auto slide
     function startAuto() {
         if (autoInterval) clearInterval(autoInterval);
-        autoInterval = setInterval(prevSlide, autoIntervalMs); // Fixed: use prevSlide for correct direction
+        autoInterval = setInterval(nextSlide, autoIntervalMs);
     }
     
     function stopAuto() {
@@ -176,24 +168,3 @@ function initCarousel(slidesId, dotsId, prevSelector, nextSelector, containerSel
         });
     }
 }
-
-// Handle resize events
-let resizeTimeout;
-window.addEventListener('resize', () => {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(() => {
-        // Reset carousel positions if needed
-        const slides = document.getElementById('slides');
-        const certsSlides = document.getElementById('certs-slides');
-        
-        if (slides) {
-            const currentSlide = parseInt(slides.style.transform.match(/-?\d+/)?.[0] || '0');
-            slides.style.transform = `translateX(-${currentSlide}%)`;
-        }
-        
-        if (certsSlides) {
-            const currentSlide = parseInt(certsSlides.style.transform.match(/-?\d+/)?.[0] || '0');
-            certsSlides.style.transform = `translateX(-${currentSlide}%)`;
-        }
-    }, 250);
-});
