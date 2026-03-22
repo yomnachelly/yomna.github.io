@@ -9,6 +9,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- Vanta.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.birds.min.js"></script>
     <style>
         :root {
             --ink: #0d0c0a;
@@ -226,6 +229,26 @@
             grid-template-columns: 55% 45%;
             padding-top: 72px;
             position: relative;
+            overflow: hidden;
+        }
+
+        /* Vanta.js canvas container - positionné en arrière-plan flou */
+        #vanta-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            filter: blur(3px);
+            opacity: 0.4;
+            pointer-events: none;
+        }
+
+        /* Assurer que le contenu reste au-dessus de l'effet */
+        .hero-left, .hero-right {
+            position: relative;
+            z-index: 2;
         }
 
         /* Decorative vertical rule */
@@ -236,6 +259,7 @@
             width: 1px;
             background: linear-gradient(to bottom, transparent 5%, var(--border) 30%, var(--border) 70%, transparent 95%);
             pointer-events: none;
+            z-index: 3;
         }
 
         .hero-left {
@@ -1228,6 +1252,9 @@
 
 <!-- ── HERO ── -->
 <section class="hero" id="hero">
+    <!-- Vanta.js container for birds effect -->
+    <div id="vanta-bg"></div>
+
     <div class="hero-left">
         <div class="status-pill">
             <span class="status-dot"></span>
@@ -1835,7 +1862,7 @@
     <div class="footer-copy">© 2026 · Développeuse Full-Stack · Nabeul, Tunisie</div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
     // ── NAV SCROLL ──
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
@@ -2080,6 +2107,28 @@
     applyTranslations(currentLang);
     document.getElementById('lang-label').textContent = currentLang === 'fr' ? 'EN' : 'FR';
 
+    // ── VANTA BIRDS EFFECT ──
+    // Initialisation avec couleur beige (#f9f7f2) en arrière-plan et oiseaux flous
+    VANTA.BIRDS({
+        el: "#vanta-bg",
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200.00,
+        minWidth: 200.00,
+        scale: 1.00,
+        scaleMobile: 1.00,
+        backgroundColor: 0xf9f7f2,  // Couleur beige identique au fond de la section hero
+        color1: 0xb8832e,           // Couleur or pour les oiseaux
+        color2: 0xd4a85c,           // Couleur or clair pour les oiseaux
+        birdSize: 2.30,
+        wingSpan: 25.00,
+        speedLimit: 5.00,
+        separation: 61.00,
+        alignment: 56.00,
+        cohesion: 72.00,
+        quantity: 3.00
+    });
 </script>
 </body>
 </html>
