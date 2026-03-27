@@ -12,7 +12,6 @@
 <meta property="og:url" content="https://yomnachelly.github.io/yomna.github.io/">
 <meta property="og:type" content="website">
     <meta name="google-site-verification" content="uGrDWWQoMnjIecdzwkg_1X8aizZDXz1douV15tFQn9w" />
-    <meta name="description" content="Yomna Chelly, développeuse Full-Stack Angular & Spring Boot, spécialisée IA & Cloud. Disponible pour opportunités professionnelles.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -2069,44 +2068,46 @@
                 <div class="reveal" style="transition-delay:.15s">
                     <div class="contact-form">
                         <div class="form-head"><i class="fas fa-paper-plane"></i> <span data-i18n="form.title">Envoyer un message</span></div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label data-i18n="form.name">Votre nom</label>
-                                <input type="text" id="form-name" placeholder="Ahmed Ben Ali" />
+                        <form id="contact-form" onsubmit="handleFormSubmit(event); return false;">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label data-i18n="form.name">Votre nom</label>
+                                    <input type="text" id="form-name" placeholder="Ahmed Ben Ali" required />
+                                </div>
+                                <div class="form-group">
+                                    <label data-i18n="form.email">Votre email</label>
+                                    <input type="email" id="form-email" placeholder="contact@entreprise.com" required />
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label data-i18n="form.email">Votre email</label>
-                                <input type="email" id="form-email" placeholder="contact@entreprise.com" />
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label data-i18n="form.company">Entreprise</label>
+                                    <input type="text" id="form-company" data-i18n-placeholder="form.company.ph" placeholder="Nom de votre société" />
+                                </div>
+                                <div class="form-group">
+                                    <label data-i18n="form.type">Type d'opportunité</label>
+                                    <select id="form-type" required>
+                                        <option value="" disabled selected data-i18n="form.choose">Choisir…</option>
+                                        <option value="stage" data-i18n="form.opt.stage">Stage PFE</option>
+                                        <option value="cdi" data-i18n="form.opt.cdi">CDI / CDD</option>
+                                        <option value="freelance" data-i18n="form.opt.freelance">Mission Freelance</option>
+                                        <option value="collaboration" data-i18n="form.opt.collab">Collaboration projet</option>
+                                        <option value="autre" data-i18n="form.opt.other">Autre</option>
+                                    </select>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label data-i18n="form.company">Entreprise</label>
-                                <input type="text" id="form-company" data-i18n-placeholder="form.company.ph" placeholder="Nom de votre société" />
+                            <div class="form-group full">
+                                <label data-i18n="form.message">Message</label>
+                                <textarea id="form-message" data-i18n-placeholder="form.message.ph" placeholder="Décrivez l'opportunité, le poste, les technologies utilisées…" required></textarea>
                             </div>
-                            <div class="form-group">
-                                <label data-i18n="form.type">Type d'opportunité</label>
-                                <select id="form-type">
-                                    <option value="" disabled selected data-i18n="form.choose">Choisir…</option>
-                                    <option value="stage" data-i18n="form.opt.stage">Stage PFE</option>
-                                    <option value="cdi" data-i18n="form.opt.cdi">CDI / CDD</option>
-                                    <option value="freelance" data-i18n="form.opt.freelance">Mission Freelance</option>
-                                    <option value="collaboration" data-i18n="form.opt.collab">Collaboration projet</option>
-                                    <option value="autre" data-i18n="form.opt.other">Autre</option>
-                                </select>
+                            <button type="submit" class="btn-send" id="btn-send">
+                                <i class="fas fa-paper-plane"></i> <span data-i18n="form.send">Envoyer le message</span>
+                            </button>
+                            <div class="form-success" id="form-success">
+                                <i class="fas fa-circle-check"></i>
+                                <span data-i18n="form.success">Message envoyé avec succès ! Je vous répondrai dans les plus brefs délais.</span>
                             </div>
-                        </div>
-                        <div class="form-group full">
-                            <label data-i18n="form.message">Message</label>
-                            <textarea id="form-message" data-i18n-placeholder="form.message.ph" placeholder="Décrivez l'opportunité, le poste, les technologies utilisées…"></textarea>
-                        </div>
-                        <button class="btn-send" id="btn-send" onclick="handleFormSubmit()">
-                            <i class="fas fa-paper-plane"></i> <span data-i18n="form.send">Envoyer le message</span>
-                        </button>
-                        <div class="form-success" id="form-success">
-                            <i class="fas fa-circle-check"></i>
-                            <span data-i18n="form.success">Message envoyé avec succès ! Je vous répondrai dans les plus brefs délais.</span>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -2169,15 +2170,19 @@
 
     revealEls.forEach(el => observer.observe(el));
 
-    // ── FORM SUBMIT ──
-    function handleFormSubmit() {
+    // ── FORM SUBMIT AVEC FORMSPREE ──
+    async function handleFormSubmit(event) {
+        if (event) event.preventDefault();
+        
         const name = document.getElementById('form-name').value.trim();
         const email = document.getElementById('form-email').value.trim();
         const message = document.getElementById('form-message').value.trim();
         const type = document.getElementById('form-type').value;
+        const company = document.getElementById('form-company').value.trim();
         const btn = document.getElementById('btn-send');
         const success = document.getElementById('form-success');
-
+        
+        // Validation des champs obligatoires
         if (!name || !email || !message || !type) {
             ['form-name','form-email','form-message','form-type'].forEach(id => {
                 const el = document.getElementById(id);
@@ -2188,29 +2193,54 @@
             });
             return;
         }
-
+        
+        // Désactiver le bouton pendant l'envoi
         btn.disabled = true;
+        const originalBtnText = btn.innerHTML;
         btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours…';
-
-        const company = document.getElementById('form-company').value.trim();
-        const subject = encodeURIComponent(`Opportunité [${type}] — ${name}${company ? ' · ' + company : ''}`);
-        const body = encodeURIComponent(
-            `Bonjour Yomna,\n\nJe me permets de vous contacter suite à la visite de votre portfolio.\n\n` +
-            `Nom : ${name}\nEmail : ${email}${company ? '\nEntreprise : ' + company : ''}\nType : ${type}\n\n` +
-            `Message :\n${message}\n\nCordialement,\n${name}`
-        );
-        window.location.href = `mailto:yomnachelly3@gmail.com?subject=${subject}&body=${body}`;
-
-        setTimeout(() => {
-            btn.innerHTML = '<i class="fas fa-paper-plane"></i> Envoyer le message';
-            btn.disabled = false;
-            document.getElementById('form-success').classList.add('show');
-            ['form-name','form-email','form-company','form-message'].forEach(id => {
-                document.getElementById(id).value = '';
+        
+        try {
+            // Envoyer les données à Formspree
+            const response = await fetch('https://formspree.io/f/xykbzvzo', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: name,
+                    email: email,
+                    company: company,
+                    opportunity_type: type,
+                    message: message,
+                    _subject: `Portfolio - ${type} - ${name}`
+                })
             });
-            document.getElementById('form-type').value = '';
-            setTimeout(() => document.getElementById('form-success').classList.remove('show'), 6000);
-        }, 1200);
+            
+            if (response.ok) {
+                // Succès - afficher le message de confirmation
+                success.classList.add('show');
+                
+                // Réinitialiser le formulaire
+                ['form-name','form-email','form-company','form-message'].forEach(id => {
+                    document.getElementById(id).value = '';
+                });
+                document.getElementById('form-type').value = '';
+                
+                // Masquer le message après 5 secondes
+                setTimeout(() => success.classList.remove('show'), 5000);
+            } else {
+                // Erreur
+                alert('Une erreur est survenue. Veuillez réessayer ou m\'envoyer un email directement à yomnachelly3@gmail.com');
+            }
+        } catch (error) {
+            console.error('Erreur:', error);
+            alert('Erreur de connexion. Veuillez réessayer ou m\'envoyer un email à yomnachelly3@gmail.com');
+        } finally {
+            // Réactiver le bouton
+            btn.disabled = false;
+            btn.innerHTML = originalBtnText;
+        }
     }
 
     // ── DARK MODE ──
@@ -2368,7 +2398,6 @@
     document.getElementById('lang-label').textContent = currentLang === 'fr' ? 'EN' : 'FR';
 
     // ── VANTA BIRDS EFFECT ──
-    // Initialisation avec couleur beige (#f9f7f2) en arrière-plan et oiseaux flous
     VANTA.BIRDS({
         el: "#vanta-bg",
         mouseControls: true,
