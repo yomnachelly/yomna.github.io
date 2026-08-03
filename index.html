@@ -1329,6 +1329,212 @@
             footer { padding: 1.5rem 1.25rem; flex-direction: column; gap: 0.4rem; text-align: center; }
             .form-row { grid-template-columns: 1fr; }
         }
+
+        /* ── DIPLÔMES & DISTINCTION ── */
+        #diplomas { background: var(--white); }
+
+        .diplomas-grid {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .diplomas-col-title {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.15rem;
+            color: var(--ink);
+            margin-bottom: 1.4rem;
+        }
+
+        .diplomas-col-title i { color: var(--gold); }
+
+        .diploma-card {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            background: var(--cream-warm);
+            border: 1px solid var(--border-soft);
+            border-radius: var(--radius-lg);
+            padding: 1.3rem 1.4rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s;
+        }
+
+        .diploma-card:hover {
+            border-color: var(--gold);
+            box-shadow: var(--shadow);
+            transform: translateX(4px);
+        }
+
+        .diploma-icon {
+            width: 42px; height: 42px;
+            flex-shrink: 0;
+            background: var(--gold-pale);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-size: 1.05rem;
+        }
+
+        .diploma-name {
+            font-weight: 600;
+            color: var(--ink);
+            font-size: 0.96rem;
+            margin-bottom: 0.25rem;
+            line-height: 1.4;
+        }
+
+        .diploma-school {
+            font-size: 0.82rem;
+            color: var(--ink-muted);
+        }
+
+        .diploma-date {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.72rem;
+            color: var(--gold);
+            margin-top: 0.35rem;
+            letter-spacing: 0.03em;
+        }
+
+        .distinction-card {
+            position: relative;
+            background: linear-gradient(160deg, var(--gold-pale), var(--cream-warm));
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 2.2rem 1.6rem;
+            text-align: center;
+            overflow: hidden;
+            transition: all 0.35s;
+        }
+
+        .distinction-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .distinction-ribbon {
+            width: 54px; height: 54px;
+            margin: 0 auto 1rem;
+            background: var(--gold);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            box-shadow: var(--shadow);
+        }
+
+        .distinction-rank {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.4rem;
+            color: var(--gold);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .distinction-desc {
+            font-size: 0.9rem;
+            color: var(--ink-light);
+        }
+
+        /* ── CLUBS & ACTIVITÉS ── */
+        #clubs { background: var(--cream-warm); }
+
+        .clubs-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.75rem;
+        }
+
+        .club-card {
+            background: var(--white);
+            border: 1px solid var(--border-soft);
+            border-radius: var(--radius-lg);
+            padding: 1.8rem;
+            transition: all 0.3s;
+        }
+
+        .club-card:hover {
+            border-color: var(--gold);
+            box-shadow: var(--shadow);
+            transform: translateY(-3px);
+        }
+
+        .club-card-head {
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+            margin-bottom: 1.1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-soft);
+        }
+
+        .club-card-icon {
+            width: 42px; height: 42px;
+            flex-shrink: 0;
+            background: var(--gold-pale);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-size: 1.05rem;
+        }
+
+        .club-card-head h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.1rem;
+            color: var(--ink);
+            margin-bottom: 0.15rem;
+        }
+
+        .club-card-role {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--ink-muted);
+        }
+
+        .club-card-desc {
+            font-size: 0.9rem;
+            color: var(--ink-light);
+            line-height: 1.75;
+            margin-bottom: 1.3rem;
+        }
+
+        .club-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.6rem;
+        }
+
+        .club-gallery-2 { grid-template-columns: repeat(2, 1fr); }
+
+        .club-gallery-item {
+            aspect-ratio: 1 / 1;
+            border-radius: 6px;
+            overflow: hidden;
+            border: 1px solid var(--border-soft);
+            background: var(--gold-pale);
+        }
+
+        .club-gallery-item img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.45s ease;
+        }
+
+        .club-gallery-item:hover img { transform: scale(1.08); }
     </style>
 </head>
 <body>
@@ -1341,8 +1547,10 @@
     </a>
     <ul class="nav-links">
         <li><a href="#about" data-i18n="nav.about">À propos</a></li>
+        <li><a href="#diplomas" data-i18n="nav.diplomas">Diplômes</a></li>
         <li><a href="#skills" data-i18n="nav.skills">Compétences</a></li>
         <li><a href="#experience" data-i18n="nav.experience">Expérience</a></li>
+        <li><a href="#clubs" data-i18n="nav.clubs">Clubs</a></li>
         <li><a href="#projects" data-i18n="nav.projects">Projets</a></li>
         <li><a href="#certifications" data-i18n="nav.certs">Certifications</a></li>
         <li><a href="#articles" data-i18n="nav.articles">Articles</a></li>
@@ -1505,6 +1713,48 @@
         </div>
     </div>
 </div>
+
+<div class="divider"></div>
+
+<!-- ── DIPLÔMES & DISTINCTION ── -->
+<section id="diplomas">
+    <div class="section-wrap">
+        <div class="s-label" data-i18n="diplomas.label">Parcours académique</div>
+        <h2 class="s-title" data-i18n="diplomas.title">Diplômes & <span class="it">distinction</span></h2>
+        <div class="diplomas-grid">
+            <div class="diplomas-col reveal">
+                <h3 class="diplomas-col-title"><i class="fas fa-graduation-cap"></i> <span data-i18n="diplomas.col.title">Diplômes</span></h3>
+
+                <div class="diploma-card">
+                    <div class="diploma-icon"><i class="fas fa-award"></i></div>
+                    <div class="diploma-content">
+                        <div class="diploma-name" data-i18n="diploma1.name">Licence en Développement des Systèmes d'Information (DSI)</div>
+                        <div class="diploma-school">ISET Zagouan</div>
+                        <div class="diploma-date" data-i18n="diploma1.date">2023 — 2026</div>
+                    </div>
+                </div>
+
+                <div class="diploma-card">
+                    <div class="diploma-icon"><i class="fas fa-scroll"></i></div>
+                    <div class="diploma-content">
+                        <div class="diploma-name" data-i18n="diploma2.name">Baccalauréat — Sciences de l'Informatique</div>
+                        <div class="diploma-school" data-i18n="diploma2.school">Lycée secondaire, Tunisie</div>
+                        <div class="diploma-date" data-i18n="diploma2.date">2023</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="distinction-col reveal" style="transition-delay:.1s">
+                <h3 class="diplomas-col-title"><i class="fas fa-medal"></i> <span data-i18n="distinction.col.title">Distinction</span></h3>
+                <div class="distinction-card">
+                    <div class="distinction-ribbon"><i class="fas fa-trophy"></i></div>
+                    <div class="distinction-rank" data-i18n="distinction.rank">3<sup>ème</sup></div>
+                    <div class="distinction-desc" data-i18n="distinction.desc">de la promotion — Licence DSI, ISET Zagouan</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 <div class="divider"></div>
 
@@ -1694,6 +1944,52 @@
         </div>
     </div>
 </div>
+
+<div class="divider"></div>
+
+<!-- ── CLUBS & ACTIVITÉS ── -->
+<section id="clubs">
+    <div class="section-wrap">
+        <div class="s-label" data-i18n="clubs.label">Vie associative</div>
+        <h2 class="s-title" data-i18n="clubs.title">Clubs & <span class="it">activités</span></h2>
+        <div class="clubs-grid">
+            <div class="club-card reveal">
+                <div class="club-card-head">
+                    <div class="club-card-icon"><i class="fas fa-users"></i></div>
+                    <div>
+                        <h3 data-i18n="club1.name">Club Secrinets</h3>
+                        <span class="club-card-role" data-i18n="club1.role">Membre actif — Cybersécurité</span>
+                    </div>
+                </div>
+                <p class="club-card-desc" data-i18n="club1.desc">
+                    Participation active aux activités du club Secrinets : ateliers de sensibilisation à la cybersécurité, veille technologique et événements communautaires organisés au sein de l'établissement.
+                </p>
+                <div class="club-gallery">
+                    <div class="club-gallery-item"><img src="club_secrinets_1.jpg" alt="Club Secrinets - photo 1" loading="lazy"></div>
+                    <div class="club-gallery-item"><img src="club_secrinets_2.jpg" alt="Club Secrinets - photo 2" loading="lazy"></div>
+                    <div class="club-gallery-item"><img src="club_secrinets_3.jpg" alt="Club Secrinets - photo 3" loading="lazy"></div>
+                </div>
+            </div>
+
+            <div class="club-card reveal" style="transition-delay:.1s">
+                <div class="club-card-head">
+                    <div class="club-card-icon"><i class="fas fa-bolt"></i></div>
+                    <div>
+                        <h3 data-i18n="club2.name">Autres engagements</h3>
+                        <span class="club-card-role" data-i18n="club2.role">Hackathons & conférences</span>
+                    </div>
+                </div>
+                <p class="club-card-desc" data-i18n="club2.desc">
+                    Participation à plusieurs hackathons et conférences techniques, favorisant le travail d'équipe, la créativité sous contrainte de temps et la veille sur les nouvelles technologies.
+                </p>
+                <div class="club-gallery club-gallery-2">
+                    <div class="club-gallery-item"><img src="club_other_1.jpg" alt="Hackathon - photo 1" loading="lazy"></div>
+                    <div class="club-gallery-item"><img src="club_other_2.jpg" alt="Conférence - photo 2" loading="lazy"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 <div class="divider"></div>
 
@@ -2298,6 +2594,16 @@
             'info.loc': 'Localisation', 'info.locval': 'Nabeul, Tunisie (Open to Remote)',
             'info.lang': 'Langues', 'info.langval': 'Arabe · Français · Anglais',
             'info.status': 'Statut', 'info.statusval': 'Disponible immédiatement',
+            'diplomas.label': 'Parcours académique', 'diplomas.title': 'Diplômes & <span class="it">distinction</span>',
+            'diplomas.col.title': 'Diplômes', 'distinction.col.title': 'Distinction',
+            'diploma1.name': 'Licence en Développement des Systèmes d\'Information (DSI)', 'diploma1.date': '2023 — 2026',
+            'diploma2.name': 'Baccalauréat — Sciences de l\'Informatique', 'diploma2.school': 'Lycée secondaire, Tunisie', 'diploma2.date': '2023',
+            'distinction.rank': '3<sup>ème</sup>', 'distinction.desc': 'de la promotion — Licence DSI, ISET Zagouan',
+            'clubs.label': 'Vie associative', 'clubs.title': 'Clubs & <span class="it">activités</span>',
+            'club1.name': 'Club Secrinets', 'club1.role': 'Membre actif — Cybersécurité',
+            'club1.desc': 'Participation active aux activités du club Secrinets : ateliers de sensibilisation à la cybersécurité, veille technologique et événements communautaires organisés au sein de l\'établissement.',
+            'club2.name': 'Autres engagements', 'club2.role': 'Hackathons & conférences',
+            'club2.desc': 'Participation à plusieurs hackathons et conférences techniques, favorisant le travail d\'équipe, la créativité sous contrainte de temps et la veille sur les nouvelles technologies.',
             'skills.label': 'Compétences techniques', 'skills.title': 'Stack <span class="it">maîtrisée</span>',
             'exp.label': 'Parcours professionnel', 'exp.title': 'Expériences <span class="it">terrain</span>',
             'exp.ongoing': 'Terminé',
@@ -2346,6 +2652,16 @@
             'info.loc': 'Location', 'info.locval': 'Nabeul, Tunisia (Open to Remote)',
             'info.lang': 'Languages', 'info.langval': 'Arabic · French · English',
             'info.status': 'Status', 'info.statusval': 'Available immediately',
+            'diplomas.label': 'Academic background', 'diplomas.title': 'Degrees & <span class="it">distinction</span>',
+            'diplomas.col.title': 'Degrees', 'distinction.col.title': 'Distinction',
+            'diploma1.name': 'BSc in Information Systems Development (DSI)', 'diploma1.date': '2023 — 2026',
+            'diploma2.name': 'Baccalaureate — Computer Science track', 'diploma2.school': 'Secondary school, Tunisia', 'diploma2.date': '2023',
+            'distinction.rank': '3<sup>rd</sup>', 'distinction.desc': 'Ranked in class — BSc DSI, ISET Zagouan',
+            'clubs.label': 'Extracurricular activities', 'clubs.title': 'Clubs & <span class="it">activities</span>',
+            'club1.name': 'Secrinets Club', 'club1.role': 'Active member — Cybersecurity',
+            'club1.desc': 'Active participation in Secrinets Club activities: cybersecurity awareness workshops, technology watch and community events organized within the institution.',
+            'club2.name': 'Other engagements', 'club2.role': 'Hackathons & conferences',
+            'club2.desc': 'Participation in several hackathons and technical conferences, fostering teamwork, creativity under time constraints, and staying current with new technologies.',
             'skills.label': 'Technical skills', 'skills.title': 'Mastered <span class="it">stack</span>',
             'exp.label': 'Professional journey', 'exp.title': 'Field <span class="it">experience</span>',
             'exp.ongoing': 'Completed',
